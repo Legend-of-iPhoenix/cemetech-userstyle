@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "iPhoenix's Cemetech Userstyle",
+  "version": "1.0.0",
+  "description": "Adds a spiffy userstyle to cemetech.net",
+  "content_scripts": [{
+    "css": ["userstyle.css"],
+    "matches": ["https://www.cemetech.net/*"]
+  }]
+}
