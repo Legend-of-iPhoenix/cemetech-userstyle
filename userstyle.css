@@ -1,0 +1,177 @@
+/* anti-gradient */
+
+section.sidebar__section,
+div.mainlowermiddle,
+div.mainheadmiddle,
+div#hbot {
+	background: #7B291B;
+}
+
+span.forum-action-button,
+span.post-action-button,
+span.navsearch {
+	background: #cac4c4;
+}
+
+
+/* fancy underlines */
+
+a.postlink,
+li.navbutton a,
+a.maintitle,
+a.nav,
+aside a,
+a.username,
+li.sax-message a,
+li.post-datetime a {
+	text-decoration: none;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0% 100%;
+	background-repeat: no-repeat;
+	background-size: 0% 1px;
+	transition: background-size .3s;
+}
+
+a.postlink:hover,
+a.postlink:focus,
+li.navbutton:hover a,
+li.navbutton:focus a,
+a.maintitle:hover,
+a.maintitle:focus,
+a.nav:hover,
+a.nav:focus,
+aside a:hover,
+aside a:focus,
+a.username:hover,
+a.username:focus,
+li.sax-message a:hover,
+li.sax-message a:focus,
+li.post-datetime a:hover,
+li.post-datetime a:focus {
+	text-decoration: none;
+	background-size: 100% 1px;
+}
+
+li.navbutton:hover {
+	border-color: transparent;
+	box-shadow: none;
+	background: none;
+}
+
+
+/* hide useless sidebar stuff */
+
+.sidebar__section:nth-child(1),
+.sidebar__section:nth-child(3) {
+	display: none;
+}
+
+.sidebar__section:only-child {
+	display: block;
+}
+
+
+/* hide annoying borders */
+
+.post-header {
+	border-bottom: none;
+}
+
+.post,
+.typepost,
+.helpline {
+	border: none;
+}
+
+img.avatar,
+.profile_avatar img,
+.ppd_graph img {
+	border: none;
+}
+
+.post-action {
+	border-top: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+}
+
+.forum-action-button {
+	border: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.spaceRow.hdivider_thick {
+	display: none;
+}
+
+tr>th {
+	border-bottom: 1px solid #7B291B;
+}
+
+div.staffpix img {
+	border: none;
+}
+
+.sideheadtop,
+.roundedtop {
+	border: none;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+
+/** fix border on registration/editing page **/
+
+.row2 .post {
+	border: 1px solid #7B291B;
+}
+
+
+/* fix gap in header */
+
+#hbot {
+	top: 1px;
+}
+
+
+/* fix stupid sax thing with double author tags */
+
+.sax-username[title^="saxjax@cemetech.net"] {
+	display: none;
+}
+
+
+/* remove backgrounds */
+
+.navbread {
+	background: transparent;
+}
+
+.innersidebar {
+	background: transparent;
+}
+
+
+/* sidebar hover effect */
+
+.sidebar__section {
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.sidebar__section:hover {
+	box-shadow: -3px 3px 5px #999;
+}
+
+
+/* make back to top arrows more discreet */
+
+a[href="#top"] {
+	visibility: hidden;
+}
+
+a[href="#top"]::before {
+	content: '↑';
+	visibility: visible;
+}
