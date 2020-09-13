@@ -59,7 +59,7 @@ li.navbutton:hover {
 }
 
 
-/* hide useless sidebar stuff */
+/* hide useless stuff */
 
 .sidebar__section:nth-child(1),
 .sidebar__section:nth-child(3) {
@@ -68,6 +68,10 @@ li.navbutton:hover {
 
 .sidebar__section:only-child {
 	display: block;
+}
+
+#cemetech-at-a-glance .glance_boxes>div:nth-child(3) {
+	display: none;
 }
 
 
@@ -130,10 +134,21 @@ div.staffpixsmall img {
 }
 
 
-/* fix gap in header */
+/* fix gaps */
 
 #hbot {
 	top: 1px !important;
+}
+
+.mainbody,
+.sideheadtop,
+.mainheadmiddle {
+	margin-bottom: 1px !important;
+}
+
+.sidebar__section {
+	margin-top: 0.625rem !important;
+	margin-bottom: 0 !important;
 }
 
 
@@ -207,4 +222,18 @@ a[href="#top"]::before {
 
 ul.pagination li:hover {
 	background-color: #ccc !important;
+}
+
+
+/* center headings on member list */
+
+.thTop {
+	text-align: center;
+}
+
+
+/* dynmap stuff, because I can */
+
+#mcmap>.chat {
+	display: none;
 }
