@@ -237,3 +237,17 @@ ul.pagination li:hover {
 #mcmap>.chat {
 	display: none;
 }
+
+
+/* polls */
+
+img[src$="voting_bar.gif"] {
+	/* people have been shot for less than this */
+	content: linear-gradient(#7B291B, #7B291B) !important;
+	border-radius: 3px;
+}
+
+img[src$="/vote_lcap.gif"],
+img[src$="/vote_rcap.gif"] {
+	display: none;
+}
