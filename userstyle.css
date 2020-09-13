@@ -4,13 +4,13 @@ section.sidebar__section,
 div.mainlowermiddle,
 div.mainheadmiddle,
 div#hbot {
-	background: #7B291B;
+	background: #7B291B !important;
 }
 
 span.forum-action-button,
 span.post-action-button,
 span.navsearch {
-	background: #cac4c4;
+	background: #cac4c4 !important;
 }
 
 
@@ -74,28 +74,28 @@ li.navbutton:hover {
 /* hide annoying borders */
 
 .post-header {
-	border-bottom: none;
+	border-bottom: none !important;
 }
 
 .post,
 .typepost,
 .helpline {
-	border: none;
+	border: none !important;
 }
 
 img.avatar,
 .profile_avatar img,
 .ppd_graph img {
-	border: none;
+	border: none !important;
 }
 
 .post-action {
-	border-top: 1px solid #bbb;
-	border-left: 1px solid #bbb;
+	border-top: 1px solid #bbb !important;
+	border-left: 1px solid #bbb !important;
 }
 
 .forum-action-button {
-	border: none;
+	border: none !important;
 }
 
 table {
@@ -103,36 +103,36 @@ table {
 }
 
 .spaceRow.hdivider_thick {
-	display: none;
+	display: none !important;
 }
 
 tr>th {
-	border-bottom: 1px solid #7B291B;
+	border-bottom: 1px solid #7B291B !important;
 }
 
 div.staffpix img {
-	border: none;
+	border: none !important;
 }
 
 .sideheadtop,
 .roundedtop {
-	border: none;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+	border: none !important;
+	padding-left: 0.5em !important;
+	padding-right: 0.5em !important;
 }
 
 
-/** fix border on registration/editing page **/
+/** fix borders on registration/editing page **/
 
 .row2 .post {
-	border: 1px solid #7B291B;
+	border: 1px solid #7B291B !important;
 }
 
 
 /* fix gap in header */
 
 #hbot {
-	top: 1px;
+	top: 1px !important;
 }
 
 
@@ -146,11 +146,11 @@ div.staffpix img {
 /* remove backgrounds */
 
 .navbread {
-	background: transparent;
+	background: transparent !important;
 }
 
 .innersidebar {
-	background: transparent;
+	background: transparent !important;
 }
 
 
@@ -168,10 +168,31 @@ div.staffpix img {
 /* make back to top arrows more discreet */
 
 a[href="#top"] {
-	visibility: hidden;
+	visibility: hidden !important;
 }
 
 a[href="#top"]::before {
 	content: '↑';
 	visibility: visible;
+}
+
+
+/* wider sax */
+
+.sidebar {
+	width: 14.5rem !important;
+}
+
+#page_content_parent {
+	width: calc(100% - 15rem) !important;
+}
+
+.sax-message {
+	font-size: 0.675rem !important;
+}
+
+@media (max-width: 60em) {
+	.sidebar {
+		width: auto !important;
+	}
 }
