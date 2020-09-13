@@ -110,7 +110,8 @@ tr>th {
 	border-bottom: 1px solid #7B291B !important;
 }
 
-div.staffpix img {
+div.staffpix img,
+div.staffpixsmall img {
 	border: none !important;
 }
 
@@ -154,13 +155,17 @@ div.staffpix img {
 }
 
 
-/* sidebar hover effect */
+/* hover effects */
 
-.sidebar__section {
+.sidebar__section,
+.nav-section__item,
+.file-detail__download-button {
 	transition: box-shadow 0.3s ease-in-out;
 }
 
-.sidebar__section:hover {
+.sidebar__section:hover,
+.nav-section__item:hover,
+.file-detail__download-button:hover {
 	box-shadow: -3px 3px 5px #999;
 }
 
@@ -195,4 +200,11 @@ a[href="#top"]::before {
 	.sidebar {
 		width: auto !important;
 	}
+}
+
+
+/* color accessibility */
+
+ul.pagination li:hover {
+	background-color: #ccc !important;
 }
