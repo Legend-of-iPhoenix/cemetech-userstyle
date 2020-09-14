@@ -56,9 +56,9 @@ li.post-datetime a:focus {
 }
 
 li.navbutton:hover {
-	border-color: transparent;
-	box-shadow: none;
-	background: none;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	background: none !important;
 }
 
 
