@@ -352,4 +352,6 @@ div.code-buttons {
 
 #quickreply label textarea.typepost {
 	max-width: none;
+	min-height: 10rem;
+	resize: vertical;
 }
