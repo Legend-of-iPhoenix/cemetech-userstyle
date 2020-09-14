@@ -159,9 +159,10 @@ div.staffpixsmall img {
 	padding: 0 !important;
 }
 
-.mainbodyinner > *:not(ul):not(ol) {
+.mainbodyinner>*:not(ul):not(ol) {
 	padding: 0.1875rem !important;
 }
+
 
 /* fix stupid sax thing with double author tags */
 
@@ -229,11 +230,10 @@ a[href="#top"]::before {
 	.sidebar {
 		width: auto !important;
 	}
-
 	.sidebar__section {
 		margin-top: 0 !important;
 		margin-bottom: 0.625rem !important;
-	}	
+	}
 }
 
 @media (min-width: 60em) {
@@ -241,6 +241,7 @@ a[href="#top"]::before {
 		width: calc(100% - 15rem) !important;
 	}
 }
+
 
 /* color accessibility */
 
@@ -279,63 +280,81 @@ img[src$="/vote_rcap.gif"] {
 
 /* pips */
 
-.user-info-row.pips {
+.profile_brief .gen:nth-child(6) {
+	display: inline-block;
+}
+
+.user-info-row.pips,
+.profile_brief .gen:nth-child(6) {
 	width: fit-content;
 	width: -moz-fit-content;
 	height: 0.75em;
 	border-radius: 3px;
-
 	background: #7B291B;
 }
 
-.user-info-row.pips img[src*="pips"] {
+.user-info-row.pips img[src*="pips"],
+.profile_brief .gen:nth-child(6) img[src*="pips"] {
 	visibility: hidden;
 }
 
-.user-info-row.pips img[src$='pips/1.png'] {
+.user-info-row.pips img[src$='pips/1.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/1.png"] {
 	width: 0.75em;
 }
 
-.user-info-row.pips img[src$='pips/2.png'] {
+.user-info-row.pips img[src$='pips/2.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/2.png"] {
 	width: 1.5em;
 }
 
-.user-info-row.pips img[src$='pips/3.png'] {
+.user-info-row.pips img[src$='pips/3.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/3.png"] {
 	width: 2.25em;
 }
 
-.user-info-row.pips img[src$='pips/4.png'] {
+.user-info-row.pips img[src$='pips/4.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/4.png"] {
 	width: 3em;
 }
 
-.user-info-row.pips img[src$='pips/5.png'] {
+.user-info-row.pips img[src$='pips/5.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/5.png"] {
 	width: 3.75em;
 }
 
-.user-info-row.pips img[src$='pips/6.png'] {
+.user-info-row.pips img[src$='pips/6.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/6.png"] {
 	width: 4.5em;
 }
 
-.user-info-row.pips img[src$='pips/7.png'] {
+.user-info-row.pips img[src$='pips/7.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/7.png"] {
 	width: 5.25em;
 }
 
-.user-info-row.pips img[src$='pips/8.png'] {
+.user-info-row.pips img[src$='pips/8.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/8.png"] {
 	width: 6em;
 }
 
-.user-info-row.pips img[src$='pips/9.png'] {
+.user-info-row.pips img[src$='pips/9.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/9.png"] {
 	width: 6.75em;
 }
 
-.user-info-row.pips img[src$='pips/10.png'] {
+.user-info-row.pips img[src$='pips/10.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/10.png"] {
 	width: 7.5em;
 }
 
-.user-info-row.pips img[src$='pips/expert.png'] {
+.user-info-row.pips img[src$='pips/expert.png'],
+.profile_brief .gen:nth-child(6) img[src*="pips/expert.png"] {
+	/* this doesn't work- needs to be fixed */
 	content: url("templates/Cemetech6/images/pips/expert.png");
 	height: auto;
 }
+
 
 /* center search bar vertically */
 
