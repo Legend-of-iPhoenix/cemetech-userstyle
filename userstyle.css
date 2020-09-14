@@ -152,6 +152,14 @@ div.staffpixsmall img {
 	margin-bottom: 0 !important;
 }
 
+.mainbodyinner {
+	padding: 0 !important;
+}
+
+.post {
+	padding: 0.1875rem !important;
+}
+
 
 /* fix stupid sax thing with double author tags */
 
