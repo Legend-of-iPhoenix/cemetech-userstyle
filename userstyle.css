@@ -159,7 +159,7 @@ div.staffpixsmall img {
 	padding: 0 !important;
 }
 
-.mainbodyinner > * {
+.mainbodyinner > *:not(ul):not(ol) {
 	padding: 0.1875rem !important;
 }
 
