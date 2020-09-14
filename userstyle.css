@@ -27,7 +27,7 @@ aside a,
 a.username,
 li.sax-message a,
 li.post-datetime a {
-	text-decoration: none;
+	text-decoration: none !important;
 	background-image: linear-gradient(currentColor, currentColor);
 	background-position: 0 100%;
 	background-repeat: no-repeat;
@@ -51,7 +51,7 @@ li.sax-message a:hover,
 li.sax-message a:focus,
 li.post-datetime a:hover,
 li.post-datetime a:focus {
-	text-decoration: none;
+	text-decoration: none !important;
 	background-size: 100% 1px;
 }
 
