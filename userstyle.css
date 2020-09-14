@@ -196,3 +196,15 @@ a[href="#top"]::before {
 		width: auto !important;
 	}
 }
+
+
+/* remove top and bottom gaps in borders */
+
+.sideheadtop,
+.mainheadmiddle {
+    margin: 0 !important;
+}
+
+.mainbody {
+    margin-bottom: 0 !important;
+}
