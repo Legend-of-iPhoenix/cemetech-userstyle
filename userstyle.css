@@ -13,7 +13,6 @@ span.navsearch {
 	background: #cac4c4 !important;
 }
 
-
 /* fancy underlines */
 
 a.postlink,
@@ -233,7 +232,6 @@ a[href="#top"]::before {
 	}
 }
 
-
 /* color accessibility */
 
 ul.pagination li:hover {
@@ -332,4 +330,22 @@ img[src$="/vote_rcap.gif"] {
 .profile_brief img[src$='pips/expert.png'] {
 	content: url("templates/Cemetech6/images/pips/expert.png");
 	height: auto;
+}
+
+/* center search bar vertically */
+
+.navsearch {
+	margin-top: 0.375rem !important;
+}
+
+
+/* fix new post form widths */
+
+div.genmed,
+div.code-buttons {
+	max-width: 40rem;
+}
+
+#quickreply label textarea.typepost {
+	max-width: none;
 }
