@@ -98,7 +98,8 @@ img.avatar,
 	border-left: 1px solid #bbb !important;
 }
 
-.forum-action-button {
+.forum-action-button,
+.post-action-button {
 	border: none !important;
 }
 
@@ -174,7 +175,9 @@ div.staffpixsmall img {
 
 .sidebar__section,
 .nav-section__item,
-.file-detail__download-button {
+.file-detail__download-button,
+.forum-action-button,
+.post-action-button {
 	transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -182,6 +185,11 @@ div.staffpixsmall img {
 .nav-section__item:hover,
 .file-detail__download-button:hover {
 	box-shadow: -3px 3px 5px #999;
+}
+
+.forum-action-button:hover,
+.post-action-button:hover {
+	box-shadow: -2px 2px 3px #aaa;
 }
 
 
