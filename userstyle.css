@@ -251,3 +251,69 @@ img[src$="/vote_lcap.gif"],
 img[src$="/vote_rcap.gif"] {
 	display: none;
 }
+
+
+/* pips */
+
+.user-info-row.pips img[src*="pips"],
+.profile_brief img[src*="pips"] {
+	content: linear-gradient(#7B291B, #7B291B);
+	border-radius: 3px;
+	height: 0.75em;
+}
+
+.user-info-row.pips img[src$='pips/1.png'],
+.profile_brief img[src$='pips/1.png'] {
+	width: 0.75em;
+}
+
+.user-info-row.pips img[src$='pips/2.png'],
+.profile_brief img[src$='pips/2.png'] {
+	width: 1.5em;
+}
+
+.user-info-row.pips img[src$='pips/3.png'],
+.profile_brief img[src$='pips/3.png'] {
+	width: 2.25em;
+}
+
+.user-info-row.pips img[src$='pips/4.png'],
+.profile_brief img[src$='pips/4.png'] {
+	width: 3em;
+}
+
+.user-info-row.pips img[src$='pips/5.png'],
+.profile_brief img[src$='pips/5.png'] {
+	width: 3.75em;
+}
+
+.user-info-row.pips img[src$='pips/6.png'],
+.profile_brief img[src$='pips/6.png'] {
+	width: 4.5em;
+}
+
+.user-info-row.pips img[src$='pips/7.png'],
+.profile_brief img[src$='pips/7.png'] {
+	width: 5.25em;
+}
+
+.user-info-row.pips img[src$='pips/8.png'],
+.profile_brief img[src$='pips/8.png'] {
+	width: 6em;
+}
+
+.user-info-row.pips img[src$='pips/9.png'],
+.profile_brief img[src$='pips/9.png'] {
+	width: 6.75em;
+}
+
+.user-info-row.pips img[src$='pips/10.png'],
+.profile_brief img[src$='pips/10.png'] {
+	width: 7.5em;
+}
+
+.user-info-row.pips img[src$='pips/expert.png'],
+.profile_brief img[src$='pips/expert.png'] {
+	content: url("templates/Cemetech6/images/pips/expert.png");
+	height: auto;
+}
