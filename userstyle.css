@@ -13,6 +13,12 @@ span.navsearch {
 	background: #cac4c4 !important;
 }
 
+span.forum-action-button:hover,
+span.post-action-button:hover {
+    background: #a8a2a2 !important;
+    transition: background 0.1s linear;
+}
+
 
 /* fancy underlines */
 
@@ -214,4 +220,16 @@ a[href="#top"]::before {
 
 .navsearch {
     margin-top: 0.375rem !important;
+}
+
+
+/* fix new post form widths */
+
+div.genmed, 
+div.code-buttons {
+    max-width: 40rem;
+}
+
+#quickreply label textarea.typepost {
+    max-width: none;
 }
