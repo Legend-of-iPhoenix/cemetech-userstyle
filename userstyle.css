@@ -221,10 +221,6 @@ a[href="#top"]::before {
 	width: 14.5rem !important;
 }
 
-#page_content_parent {
-	width: calc(100% - 15rem) !important;
-}
-
 .sax-message {
 	font-size: 0.675rem !important;
 }
@@ -233,8 +229,18 @@ a[href="#top"]::before {
 	.sidebar {
 		width: auto !important;
 	}
+
+	.sidebar__section {
+		margin-top: 0 !important;
+		margin-bottom: 0.625rem !important;
+	}	
 }
 
+@media (min-width: 60em) {
+	#page_content_parent {
+		width: calc(100% - 15rem) !important;
+	}
+}
 
 /* color accessibility */
 
