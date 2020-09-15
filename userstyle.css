@@ -1,7 +1,6 @@
 /* anti-gradient */
 
 section.sidebar__section,
-div.mainlowermiddle,
 div.mainheadmiddle,
 div#hbot {
 	background: #7B291B !important;
@@ -130,6 +129,23 @@ div.staffpixsmall img {
 	padding-right: 0.5em !important;
 }
 
+.mainheadmiddle {
+	border-top: none !important;
+}
+
+.mainlowermiddle {
+	height: 0 !important;
+	border-bottom: none !important;
+}
+
+.mainbody {
+	padding-bottom: 0.625rem !important;
+}
+
+.topictools_boxes {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
 
 /** fix borders on registration/editing page **/
 
@@ -166,6 +182,27 @@ div.staffpixsmall img {
 footer {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
+}
+
+
+/* make 1px gaps look intentional + match sidebar */
+
+.mainheadmiddle:before, .mainheadmiddle:after {
+    content: '';
+    width: 0.625em;
+    height: 1px;
+    bottom: -1px;
+    position: absolute;
+    background-color: #7B291B;
+    box-sizing: border-box;
+}
+
+.mainheadmiddle:before {
+    left: 0px;
+}
+
+.mainheadmiddle:after {
+	right: 0px;
 }
 
 
@@ -387,5 +424,4 @@ div.code-buttons {
 footer::after {
 	content: '\A Cemetech Userstyles v2.2.0 by _iPhoenix_ and contributors';
 	white-space: pre-wrap;
-	border-top: 1px solid black;
 }
