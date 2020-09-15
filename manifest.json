@@ -5,6 +5,7 @@
   "description": "Adds a spiffy userstyle to cemetech.net",
   "content_scripts": [{
     "css": ["userstyle.css"],
+    "js": ["userstyle.js"],
     "matches": ["https://www.cemetech.net/*"]
   }]
 }
