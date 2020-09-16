@@ -166,9 +166,14 @@ div.staffpixsmall img {
 	margin-bottom: 1px !important;
 }
 
+.sideheadtop, .roundedtop {
+	border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+
 .sidebar__section {
-	margin-top: 0.625rem !important;
-	margin-bottom: 0 !important;
+	margin-bottom: 0.625rem !important;
+	margin-top: 0 !important;
 }
 
 .mainbodyinner {
