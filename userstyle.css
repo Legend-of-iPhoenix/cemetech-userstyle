@@ -269,11 +269,13 @@ footer {
 
 /* make back to top arrows more discreet */
 
-a[href="#top"] {
+a[href="#top"],
+a[href="#Top"] {
 	visibility: hidden !important;
 }
 
-a[href="#top"]::before {
+a[href="#top"]::before,
+a[href="#Top"]::before {
 	content: '↑';
 	visibility: visible;
 }
