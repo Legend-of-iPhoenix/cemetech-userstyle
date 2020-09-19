@@ -17,6 +17,13 @@ function unescapeEntities(html) {
 	return txt.value;
 }
 
+function escapeHtml(text) {
+	function replaceTag(tag) {
+		return {"&": "&amp;", "<": "&lt;", ">": "&gt;"}[tag] || tag;
+	}
+	return text.replace(/[&<>]/g, replaceTag);
+}
+
 new Tweak("Fix unicode in post titles", /cemetech\.net\/forum\/viewtopic\.php/, () => {
 	const maintitle = document.querySelector(".mainheadmiddle.roundedtop .maintitle");
 
@@ -37,4 +44,35 @@ new Tweak("Fix unicode in post titles while searching.", /cemetech\.net\/forum\/
 	titleLinks.forEach(titleLink => {
 		titleLink.innerText = unescapeEntities(titleLink.innerText);
 	})
+});
+
+// stolen from womp https://github.com/mrwompwomp/Cemetech-Userstyle/blob/37aca9ebc1112f660abfa33eaf086a45e14b973f/wompScript.js#L1-L15
+new Tweak("Shorter dates.", /cemetech\.net\/forum\/search\.php/, () => {
+	const options = {
+		month: 'short',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric'
+	};
+
+	const dates = Array.from(document.querySelectorAll("span.postdetails .indextrahigh .indextralow"));
+
+	dates.forEach(date => {
+		date.textContent = new Date(date.textContent).toLocaleDateString('en-US', options);
+		date.parentNode.insertBefore(document.createElement("br"), date.nextElementSibling);
+	});
+});
+
+// also stolen from womp https://github.com/mrwompwomp/Cemetech-Userstyle/blob/37aca9ebc1112f660abfa33eaf086a45e14b973f/wompScript.js#L16-L22
+new Tweak("Make online users clickable.", /.*/, () => {
+	const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
+
+	const parts = sidebar.textContent.split("Members:");
+	const before = parts[0];
+	const names = parts[1].trim().slice(0, -1).split(", ");
+	const links = names.map(name => {
+		return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+	});
+
+	sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
 });
