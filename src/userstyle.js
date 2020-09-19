@@ -105,3 +105,25 @@ new GlobalTweak("Add strikethrough button.", /cemetech\.net\/forum\/posting\.php
 	container.appendChild(button);
 	document.querySelector(".code-buttons:first-child").appendChild(container);
 });
+
+new GlobalTweak("Add mono button.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
+	bbtags.push('[mono]', '[/mono]');
+
+	const container = document.createElement('span');
+	container.classList = "genmed code-button-wrap";
+
+	const button = document.createElement('input');
+	button.type = "button";
+	button.classList = "button";
+	button.accessKey = "m";
+	button.name = "addbbcode22";
+	button.style = "font-family: monospace;";
+	button.onclick = () => bbstyle(22);
+	button.onmouseover = () => helpline('m');
+
+	button.value = "Mono";
+
+	container.appendChild(button);
+	document.querySelector(".code-buttons:first-child").appendChild(container);
+});
