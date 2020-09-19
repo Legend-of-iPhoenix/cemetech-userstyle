@@ -76,3 +76,32 @@ new Tweak("Make online users clickable.", /.*/, () => {
 
 	sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
 });
+
+// mostly stolen from womp
+new GlobalTweak("Fix console error with youtube button.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
+});
+
+// also mostly stolen from womp.
+new GlobalTweak("Add strikethrough button.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
+	bbtags.push('[strike]', '[/strike]');
+
+	const container = document.createElement('span');
+	container.classList = "genmed code-button-wrap";
+
+	// I hate this
+	const button = document.createElement('input');
+	button.type = "button";
+	button.classList = "button";
+	button.accessKey = "t";
+	button.name = "addbbcode20";
+	button.style = "text-decoration: line-through;";
+	button.onclick = () => bbstyle(20);
+	button.onmouseover = () => helpline('st');
+
+	button.value = "Strike";
+
+	container.appendChild(button);
+	document.querySelector(".code-buttons:first-child").appendChild(container);
+});

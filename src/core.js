@@ -17,7 +17,7 @@ class Tweak {
 	}
 
 	/**
-	 * @private
+	 * @protected
 	 * @param {string} url The url to check if the tweak should be executed.
 	 */
 	applyTo(url) {
@@ -50,6 +50,23 @@ class Tweak {
 }
 
 Tweak.tweaks = [];
+
+class GlobalTweak extends Tweak {
+	/**
+	 * @protected
+	 * @param {string} url The url to check if the tweak should be executed.
+	 */
+	applyTo(url) {
+		if (this.whatPages.test(url)) {
+			const script = document.createElement("script");
+
+			const source = `/* injected by userstyle: ${this.name} */ (${this.callback.toString()})()`;
+
+			script.innerHTML = source;
+			document.body.appendChild(script);
+		}
+	}
+}
 
 window.addEventListener("load", () => {
 	Tweak.execute(window.location.href);
