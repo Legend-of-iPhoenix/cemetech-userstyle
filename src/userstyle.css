@@ -331,10 +331,16 @@ ul.pagination li:hover {
 
 /* polls */
 
-img[src$="voting_bar.gif"] {
-	/* people have been shot for less than this */
-	content: linear-gradient(#7B291B, #7B291B) !important;
+
+/** Dear future employer... I promise I will not write code like this in production if you promise not to ask me about this **/
+
+table.forumline table table table {
+	background: #7B291B;
 	border-radius: 3px;
+}
+
+table.forumline table table table>* {
+	visibility: hidden;
 }
 
 img[src$="/vote_lcap.gif"],
