@@ -337,6 +337,7 @@ ul.pagination li:hover {
 table.forumline table table table {
 	background: #7B291B;
 	border-radius: 3px;
+	line-height: 0.75em !important;
 }
 
 table.forumline table table table>* {
