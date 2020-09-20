@@ -1,7 +1,6 @@
 /* anti-gradient */
 
 section.sidebar__section,
-div.mainlowermiddle,
 div.mainheadmiddle,
 div#hbot {
 	background: #7B291B !important;
@@ -130,6 +129,24 @@ div.staffpixsmall img {
 	padding-right: 0.5em !important;
 }
 
+.mainheadmiddle {
+	border-top: none !important;
+}
+
+.mainlowermiddle {
+	height: 0 !important;
+	border-bottom: none !important;
+}
+
+.mainbody {
+	padding-bottom: 0.625rem !important;
+}
+
+.topictools_boxes {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
 
 /** fix borders on registration/editing page **/
 
@@ -150,9 +167,15 @@ div.staffpixsmall img {
 	margin-bottom: 1px !important;
 }
 
+.sideheadtop,
+.roundedtop {
+	border-top-left-radius: 8px !important;
+	border-top-right-radius: 8px !important;
+}
+
 .sidebar__section {
-	margin-top: 0.625rem !important;
-	margin-bottom: 0 !important;
+	margin-bottom: 0.625rem !important;
+	margin-top: 0 !important;
 }
 
 .mainbodyinner {
@@ -161,6 +184,46 @@ div.staffpixsmall img {
 
 .mainbodyinner>*:not(ul):not(ol) {
 	padding: 0.1875rem !important;
+}
+
+footer {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+#logo_img,
+#motto_img {
+	bottom: 0.75em !important;
+}
+
+#logo_img {
+	left: 0.75em !important;
+}
+
+#motto_img {
+	right: 0.75em !important;
+}
+
+
+/* make 1px gaps look intentional + match sidebar */
+
+.mainheadmiddle:before,
+.mainheadmiddle:after {
+	content: '';
+	width: 0.625em;
+	height: 1px;
+	bottom: -1px;
+	position: absolute;
+	background-color: #7B291B;
+	box-sizing: border-box;
+}
+
+.mainheadmiddle:before {
+	left: 0px;
+}
+
+.mainheadmiddle:after {
+	right: 0px;
 }
 
 
@@ -206,11 +269,13 @@ div.staffpixsmall img {
 
 /* make back to top arrows more discreet */
 
-a[href="#top"] {
+a[href="#top"],
+a[href="#Top"] {
 	visibility: hidden !important;
 }
 
-a[href="#top"]::before {
+a[href="#top"]::before,
+a[href="#Top"]::before {
 	content: '↑';
 	visibility: visible;
 }
@@ -266,10 +331,17 @@ ul.pagination li:hover {
 
 /* polls */
 
-img[src$="voting_bar.gif"] {
-	/* people have been shot for less than this */
-	content: linear-gradient(#7B291B, #7B291B) !important;
+
+/** Dear future employer... I promise I will not write code like this in production if you promise not to ask me about this **/
+
+table.forumline table table table {
+	background: #7B291B;
 	border-radius: 3px;
+	line-height: 0.75em !important;
+}
+
+table.forumline table table table>* {
+	visibility: hidden;
 }
 
 img[src$="/vote_lcap.gif"],
@@ -374,4 +446,15 @@ div.code-buttons {
 	max-width: none;
 	min-height: 10rem;
 	resize: vertical;
+}
+
+
+/* add version information to footer */
+
+
+/* make sure this style is always the last one in the style sheet for future maintainers */
+
+footer::after {
+	content: '\A Cemetech Userstyles v2.2.0 by _iPhoenix_ and contributors';
+	white-space: pre-wrap;
 }
