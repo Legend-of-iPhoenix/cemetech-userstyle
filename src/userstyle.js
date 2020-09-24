@@ -95,7 +95,6 @@ new GlobalTweak("Add strikethrough button.", /cemetech\.net\/forum\/posting\.php
 	button.type = "button";
 	button.classList = "button";
 	button.accessKey = "t";
-	button.name = "addbbcode20";
 	button.style = "text-decoration: line-through;";
 	button.onclick = () => bbstyle(20);
 	button.onmouseover = () => helpline('st');
@@ -117,12 +116,30 @@ new GlobalTweak("Add mono button.", /cemetech\.net\/forum\/posting\.php/, () => 
 	button.type = "button";
 	button.classList = "button";
 	button.accessKey = "m";
-	button.name = "addbbcode22";
 	button.style = "font-family: monospace;";
 	button.onclick = () => bbstyle(22);
 	button.onmouseover = () => helpline('m');
 
 	button.value = "Mono";
+
+	container.appendChild(button);
+	document.querySelector(".code-buttons:first-child").appendChild(container);
+});
+
+new GlobalTweak("Add hr button.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["hr_help"] = "Horizontal Rule: [hr] (alt+h)";
+
+	const container = document.createElement('span');
+	container.classList = "genmed code-button-wrap";
+
+	const button = document.createElement('input');
+	button.type = "button";
+	button.classList = "button";
+	button.accessKey = "h";
+	button.onclick = () => insertAtCursor("\n[hr]");
+	button.onmouseover = () => helpline('hr');
+
+	button.value = "hr";
 
 	container.appendChild(button);
 	document.querySelector(".code-buttons:first-child").appendChild(container);
