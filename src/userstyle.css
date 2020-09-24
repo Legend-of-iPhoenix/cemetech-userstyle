@@ -251,7 +251,8 @@ footer {
 .nav-section__item,
 .file-detail__download-button,
 .forum-action-button,
-.post-action-button {
+.post-action-button,
+table.forumline table table table {
 	transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -262,7 +263,8 @@ footer {
 }
 
 .forum-action-button:hover,
-.post-action-button:hover {
+.post-action-button:hover,
+table.forumline table table table:hover {
 	box-shadow: -2px 2px 3px #aaa;
 }
 
