@@ -451,6 +451,14 @@ div.code-buttons {
 }
 
 
+/* force maximum size on avatars */
+
+.profile_avatar > img {
+	max-width: 80px;
+	max-height: 80px;
+}
+
+
 /* add version information to footer */
 
 
