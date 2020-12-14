@@ -459,6 +459,14 @@ div.code-buttons {
 }
 
 
+/* fix fuzzy jstified */
+
+canvas#screen, canvas#big_screen_canvas {
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+
 /* add version information to footer */
 
 
