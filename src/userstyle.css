@@ -467,6 +467,15 @@ canvas#screen, canvas#big_screen_canvas {
 }
 
 
+/* fix slow snow */
+
+.fast_snow_overlay {
+	position: absolute;
+	width: 100%;
+	top: -1px;
+}
+
+
 /* add version information to footer */
 
 
