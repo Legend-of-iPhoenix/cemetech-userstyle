@@ -46,19 +46,6 @@ new Tweak("Fix unicode in post titles while searching.", /cemetech\.net\/forum\/
 	})
 });
 
-new Tweak("Fix slow snow", /cemetech\.net/, () => {
-	const slow_snow_overlay = document.querySelector(".banner_snow_overlay");
-	const fast_snow_overlay = document.createElement("video");
-
-	fast_snow_overlay.autoplay = fast_snow_overlay.loop = fast_snow_overlay.muted = true;
-
-	// quite possibly the sneakiest thing I've ever done
-	fast_snow_overlay.src = "https://i.imgur.com/YEOLQvh.mp4";
-	fast_snow_overlay.classList = "fast_snow_overlay";
-
-	slow_snow_overlay.parentNode.replaceChild(fast_snow_overlay, slow_snow_overlay);
-});
-
 // stolen from womp https://github.com/mrwompwomp/Cemetech-Userstyle/blob/37aca9ebc1112f660abfa33eaf086a45e14b973f/wompScript.js#L1-L15
 new Tweak("Shorter dates.", /cemetech\.net\/forum\/search\.php/, () => {
 	const options = {
