@@ -467,6 +467,12 @@ canvas#screen, canvas#big_screen_canvas {
 }
 
 
+/* fix overflowing text in posts on long words */
+
+.middle-post.post-body {
+	overflow-wrap: break-word;	
+}
+
 /* add version information to footer */
 
 
