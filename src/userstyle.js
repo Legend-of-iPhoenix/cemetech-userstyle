@@ -129,7 +129,7 @@ new GlobalTweak("Add mono button.", /cemetech\.net\/forum\/posting\.php/, () => 
 });
 
 //Restyle UTI pages (donated by womp)
-new Tweak("Restyle UTI pages", /cemetech\.net\/projects\/uti, () => {
+new Tweak("Restyle UTI pages", /cemetech\.net\/projects\/uti/, () => {
     var style = document.createElement("style");
     style.innerHTML = "tr>th{border-bottom: 1px solid #254e6f !important;}section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div#hbot,.mainbody{background:#254e6f !important;}.sidebar__section,#hbot{border: 2px solid #19364d}a{color: #222}a:hover{color:#34498B}.maintitle:hover,.sidebar__section-body a:hover,.sidebar__section-header a:hover{color: white}.navsearchinput{background:#34498B !important;}img[src*='lang_english'],.navsearchsubmit{filter:hue-rotate(194deg);}.sax-message a{background:#1c264a}";
     document.body.append(style);
