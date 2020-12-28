@@ -558,6 +558,20 @@ textarea#fullscreen_editor {
 	resize: none;
 }
 
+
+/* spoilers */
+
+span[style*="font-size: 1px"] {
+	font-size: initial !important;
+	filter: blur(0.5em);
+}
+
+span[style*="font-size: 1px"]:hover {
+	transition: all 1s;
+	filter: blur(0);
+}
+
+
 /* add version information to footer */
 
 
