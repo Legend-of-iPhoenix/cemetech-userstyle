@@ -170,7 +170,7 @@ function BBCodeToHTML(text) {
 	let result = text.replace(/</g, '&lt;').replace(/>/g, '&gt').replace(/\[(\/?)([\w*]+)(?:=([^"\n\]]+|".*?"))?]/g, parseTag).replace(/\[img\](https?:\/\/[A-Za-z0-9\-\.+_~:/?#\[\]@!$&'()*+,;%=]+)\[\/img\]/g, '<img src="$1">').replace(/\n/g, "<br />");
 
 	if (stack.length) {
-		throw new Error("Unclosed tag(s): " + stack.join(", "));
+		throw new Error("Unclosed tag(s): " + stack.map(item=>item.name).join(", "));
 	}
 
 	return result;
