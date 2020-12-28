@@ -84,6 +84,30 @@ new Tweak("Restyle UTI pages", /cemetech\.net\/projects\/uti/, () => {
 	document.body.append(style);
 });
 
+new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, () => {
+	const form = document.querySelector("form[name=post]");
+
+	const columns = document.createElement("div");
+	columns.classList = "posteditor_columns";
+	form.appendChild(columns);
+
+	columns.innerHTML = "<div class='column' style='flex-grow: 3;'><span class='title'>Preview</span><div id='realtime_preview'></div></div><div class='resize_handle'></div><div class='column' id='editor' style='flex-grow: 3;'><span class='title'>Editor</span><textarea id='fullscreen_editor'></textarea></div>"
+
+	let message = document.querySelector("form[name=post] textarea[name=message]");
+	let fullscreen_editor = document.getElementById("fullscreen_editor");
+
+	fullscreen_editor.value = message.value;
+
+	message.addEventListener("input", (event) => fullscreen_editor.value = event.target.value);
+	fullscreen_editor.addEventListener("input", (event) => {
+		message.value = event.target.value;
+
+		document.getElementById("realtime_preview").innerHTML = BBCodeToHTML(event.target.value);
+	});
+
+	attachResizeListeners();
+});
+
 // mostly stolen from womp
 new GlobalTweak("Fix console error with youtube button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";

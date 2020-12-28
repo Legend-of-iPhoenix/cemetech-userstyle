@@ -473,6 +473,91 @@ canvas#screen, canvas#big_screen_canvas {
 	overflow-wrap: break-word;	
 }
 
+
+/* fullscreen post editor */
+
+.posteditor_columns {
+	display: none;
+}
+
+.posteditor_columns.visible {
+	display: flex;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	z-index: 1000;
+
+	background-color: #bbb;
+}
+
+.column {
+	flex: 1 0 1px;
+	display: flex;
+	flex-direction: column;
+	background-color: #eee;
+	padding: 3px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	box-shadow: 0px 0px 8px #000000;
+	margin: 5px 0px;
+	min-width: 0;
+}
+
+.column:last-of-type  {
+	margin-right: 5px;
+}
+
+.column:first-of-type {
+	margin-left: 5px;
+}
+
+.column.collapsed {
+	width: 30px;
+	flex: 0 0 auto !important;	
+}
+
+.column.collapsed > * {
+	display: none;
+}
+
+.column.collapsed > span.title {
+	writing-mode: vertical-rl;
+	line-height: 30px;
+	display: block;
+
+	flex: 0 0 auto;
+}
+
+.resize_handle {
+	cursor: col-resize;
+	width: 12px;
+	flex: 0 0 auto;
+}
+
+div#realtime_preview {
+	flex: 1 0 1px; /* flex-basis must be set to anything other than auto */
+	margin: 0.5em;
+	padding: 0.5em;
+
+	background-color: #ddd;
+
+	max-width: 100%;
+
+	overflow: auto;
+}
+
+textarea#fullscreen_editor {
+	flex: 1 0 auto;
+	margin: 0.5em;
+	padding: 0.5em;
+
+	resize: none;
+}
+
 /* add version information to footer */
 
 
