@@ -561,12 +561,12 @@ textarea#fullscreen_editor {
 
 /* spoilers */
 
-span[style*="font-size: 1px"] {
-	font-size: initial !important;
+span[style*="font-size: 1px"], span[style*="font-size: 2px"] {
+	font-size: inherit !important;
 	filter: blur(0.5em);
 }
 
-span[style*="font-size: 1px"]:hover {
+span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
 	transition: all 1s;
 	filter: blur(0);
 }
