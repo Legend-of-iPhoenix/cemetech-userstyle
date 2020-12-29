@@ -288,6 +288,14 @@ table.forumline table table table:hover {
 }
 
 
+/* ... & fix resulting issue with mobild */
+
+@media (max-width: 60em) {
+	#page_content_parent {
+		padding-left: 0 !important;
+	}
+}
+
 /* make back to top arrows more discreet */
 
 a[href="#top"],
