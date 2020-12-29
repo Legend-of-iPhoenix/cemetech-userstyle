@@ -269,6 +269,25 @@ table.forumline table table table:hover {
 }
 
 
+/* shadows on all boxes */
+
+.mainheadmiddle, .mainbody, #hbot, .banner_container {
+	box-shadow: rgb(153, 153, 153) -3px 3px 5px;
+}
+
+.mainheadmiddle {
+	z-index: -1;
+}
+
+#page_content_parent {
+	padding-left: 0.5rem !important;
+}
+
+.banner_container {
+	border-radius: 23px 23px 0 0; /* to match the image*/
+}
+
+
 /* make back to top arrows more discreet */
 
 a[href="#top"],
