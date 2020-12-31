@@ -179,7 +179,7 @@ div.staffpixsmall img {
 }
 
 .mainbodyinner {
-	padding: 0 !important;
+	padding: 0 0.1875rem !important;
 }
 
 .mainbodyinner>*:not(ul):not(ol) {
