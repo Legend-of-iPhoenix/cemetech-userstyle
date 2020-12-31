@@ -2,7 +2,7 @@
 function BBCodeToHTML(text) {
 	const tags = {
 		"b": {
-			open: ()=>'<span style="font-style: bold">',
+			open: ()=>'<span style="font-weight: bold">',
 			close: ()=>'</span>'
 		},
 		"i": {
