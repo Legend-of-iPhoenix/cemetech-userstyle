@@ -577,6 +577,13 @@ div#realtime_preview {
 	overflow: auto;
 }
 
+div#realtime_preview_error {
+	background-color: #ff6961;
+
+	padding: 1em;
+	font-size: 120%;
+}
+
 textarea#fullscreen_editor {
 	flex: 1 0 auto;
 	margin: 0.5em;
