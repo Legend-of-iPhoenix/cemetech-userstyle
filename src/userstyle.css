@@ -586,6 +586,24 @@ textarea#fullscreen_editor {
 }
 
 
+/* widget to open fullscreen editor */
+
+span#fullscreen_widget {
+	margin-top: 0.5em;
+	margin-left: -1em;
+	position: absolute;
+	z-index: 1000;
+
+	opacity: 50%;
+}
+
+span#fullscreen_widget:hover {
+	transition: all 0.5s;
+	font-size: 150%;
+	opacity: 100%;
+}
+
+
 /* spoilers */
 
 span[style*="font-size: 1px"], span[style*="font-size: 2px"] {

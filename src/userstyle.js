@@ -93,8 +93,8 @@ new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, (
 
 	columns.innerHTML = "<div class='column' style='flex-grow: 3;'><span class='title'>Preview</span><div id='realtime_preview'></div></div><div class='resize_handle'></div><div class='column' id='editor' style='flex-grow: 3;'><span class='title'>Editor</span><textarea id='fullscreen_editor'></textarea></div>"
 
-	let message = document.querySelector("form[name=post] textarea[name=message]");
-	let fullscreen_editor = document.getElementById("fullscreen_editor");
+	const message = document.querySelector("form[name=post] textarea[name=message]");
+	const fullscreen_editor = document.getElementById("fullscreen_editor");
 
 	fullscreen_editor.value = message.value;
 
@@ -106,6 +106,15 @@ new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, (
 	});
 
 	attachResizeListeners();
+
+	const fullscreen_widget = document.createElement("span");
+	fullscreen_widget.innerHTML = "&#x26F6;"; // U+26F6 "SQUARE FOUR CORNERS" ⛶
+	fullscreen_widget.id = "fullscreen_widget";
+	message.parentNode.insertBefore(fullscreen_widget, message.nextSibling);
+
+	fullscreen_widget.addEventListener("click", (event) => {
+		columns.classList.add("visible");
+	});
 });
 
 // mostly stolen from womp
