@@ -98,15 +98,6 @@ new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, (
 
 	fullscreen_editor.value = message.value;
 
-	message.addEventListener("input", (event) => fullscreen_editor.value = event.target.value);
-	fullscreen_editor.addEventListener("input", (event) => {
-		message.value = event.target.value;
-
-		document.getElementById("realtime_preview").innerHTML = BBCodeToHTML(event.target.value);
-	});
-
-	attachResizeListeners();
-
 	const fullscreen_widget = document.createElement("span");
 	fullscreen_widget.innerHTML = "&#x26F6;"; // U+26F6 "SQUARE FOUR CORNERS" ⛶
 	fullscreen_widget.id = "fullscreen_widget";
@@ -114,7 +105,28 @@ new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, (
 
 	fullscreen_widget.addEventListener("click", (event) => {
 		columns.classList.add("visible");
+
+		document.getElementById("realtime_preview").innerHTML = BBCodeToHTML(fullscreen_editor.value);
 	});
+
+	message.addEventListener("input", (event) => {
+		fullscreen_editor.value = message.value;
+
+		// move widget out of the way of the scrollbar if needed
+		const newOffset = "calc(-1em - " + (message.offsetWidth - message.clientWidth) + "px)";
+		
+		if (fullscreen_widget.style.marginLeft != newOffset) {
+			fullscreen_widget.style.marginLeft = newOffset;
+		}
+	});
+	
+	fullscreen_editor.addEventListener("input", (event) => {
+		message.value = event.target.value;
+
+		document.getElementById("realtime_preview").innerHTML = BBCodeToHTML(event.target.value);
+	});
+
+	attachResizeListeners();
 });
 
 // mostly stolen from womp

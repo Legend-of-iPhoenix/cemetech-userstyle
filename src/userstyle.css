@@ -594,15 +594,20 @@ span#fullscreen_widget {
 	position: absolute;
 	z-index: 1000;
 
-	opacity: 50%;
+	font-size: 1rem;
+
+	opacity: 75%;
 }
 
 span#fullscreen_widget:hover {
 	transition: all 0.5s;
-	font-size: 150%;
+	font-size: 1.5rem;
 	opacity: 100%;
 }
 
+textarea.typepost {
+	padding-right: 1rem;
+}
 
 /* spoilers */
 
