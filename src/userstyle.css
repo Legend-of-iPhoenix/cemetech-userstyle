@@ -628,6 +628,11 @@ span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
 	filter: blur(0);
 }
 
+/* quickstart margins */
+
+.quickstart {
+	margin: 1em;
+}
 
 /* add version information to footer */
 
