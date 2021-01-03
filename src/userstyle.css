@@ -634,6 +634,12 @@ span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
 	margin: 1em;
 }
 
+/* center emotes */
+
+img[src^="images/smiles"] {
+    vertical-align: middle;
+}
+
 /* add version information to footer */
 
 
