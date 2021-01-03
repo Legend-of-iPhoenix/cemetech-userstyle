@@ -634,9 +634,9 @@ span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
 	margin: 1em;
 }
 
-/* center emotes */
+/* center some images */
 
-img[src^="images/smiles"] {
+img[src^="images/smiles"], .topictools_boxes img {
     vertical-align: middle;
 }
 
