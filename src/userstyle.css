@@ -288,7 +288,7 @@ table.forumline table table table:hover {
 }
 
 
-/* ... & fix resulting issue with mobild */
+/* ... & fix resulting issue with mobile */
 
 @media (max-width: 60em) {
 	#page_content_parent {
