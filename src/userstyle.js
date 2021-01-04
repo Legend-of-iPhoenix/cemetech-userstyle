@@ -80,6 +80,80 @@ new Tweak("Make online users clickable.", /.*/, () => {
 	sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
 });
 
+//Restyle UTI pages (donated by womp)
+new Tweak("Restyle UTI pages", /cemetech\.net\/projects\/uti/, () => {
+	const style = document.createElement("style");
+	style.innerHTML = "tr>th{border-bottom: 1px solid #254e6f !important;}section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div#hbot,.mainbody{background:#254e6f !important;}.sidebar__section,#hbot{border: 2px solid #19364d}a{color: #222}a:hover{color:#34498B}a.largetext:hover{color:#eee}.maintitle:hover,.sidebar__section-body a:hover,.sidebar__section-header a:hover{color: white}.navsearchinput{background:#34498B !important;}img[src*='lang_english'],.navsearchsubmit,.banner_container{filter:hue-rotate(194deg);}.sax-message a{background:#1c264a},.sax-timestamp{color:#ddd}";
+	document.body.append(style);
+});
+
+new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, () => {
+	const form = document.querySelector("form[name=post]");
+
+	const columns = document.createElement("div");
+	columns.classList = "posteditor_columns";
+	form.appendChild(columns);
+
+	columns.innerHTML = "<div class='column' style='flex-grow: 3;'><span class='title'>Preview</span><div id='realtime_preview_error'></div><div id='realtime_preview'></div></div><div class='resize_handle'></div><div class='column' id='editor' style='flex-grow: 3;'><span class='title'>Editor</span><textarea id='fullscreen_editor'></textarea></div>"
+
+	const message = document.querySelector("form[name=post] textarea[name=message]");
+	const fullscreen_editor = document.getElementById("fullscreen_editor");
+
+	fullscreen_editor.value = message.value;
+
+	const fullscreen_widget = document.createElement("span");
+	fullscreen_widget.innerHTML = "&#x26F6;"; // U+26F6 "SQUARE FOUR CORNERS" ⛶
+	fullscreen_widget.id = "fullscreen_widget";
+	message.parentNode.insertBefore(fullscreen_widget, message.nextSibling);
+
+	function realignFullscreenWidget() {
+		// move widget out of the way of the scrollbar if needed
+		const newOffset = "calc(-1em - " + (message.offsetWidth - message.clientWidth) + "px)";
+
+		if (fullscreen_widget.style.marginLeft != newOffset) {
+			fullscreen_widget.style.marginLeft = newOffset;
+		}
+	}
+
+	function generatePreview() {
+		const realtime_preview_error = document.getElementById("realtime_preview_error");
+		try {
+			document.getElementById("realtime_preview").innerHTML = BBCodeToHTML(fullscreen_editor.value);
+			realtime_preview_error.style.display = "none";
+		} catch (error) {
+			realtime_preview_error.style.display = "block";
+			realtime_preview_error.innerText = error.message;
+		}
+	}
+
+	fullscreen_widget.addEventListener("click", (event) => {
+		columns.classList.add("visible");
+
+		generatePreview();
+	});
+
+	message.addEventListener("input", (event) => {
+		fullscreen_editor.value = message.value;
+		
+		realignFullscreenWidget();
+	});
+	
+	fullscreen_editor.addEventListener("input", (event) => {
+		message.value = event.target.value;
+
+		generatePreview();
+	});
+
+	columns.addEventListener("keyup", (event) => {
+		if (event.key == "Escape") {
+			columns.classList.remove("visible");
+		}
+	});
+
+	attachResizeListeners();
+	realignFullscreenWidget();
+});
+
 // mostly stolen from womp
 new GlobalTweak("Fix console error with youtube button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
@@ -98,7 +172,6 @@ new GlobalTweak("Add strikethrough button.", /cemetech\.net\/forum\/posting\.php
 	button.type = "button";
 	button.classList = "button";
 	button.accessKey = "t";
-	button.name = "addbbcode20";
 	button.style = "text-decoration: line-through;";
 	button.onclick = () => bbstyle(20);
 	button.onmouseover = () => helpline('st');
@@ -120,12 +193,30 @@ new GlobalTweak("Add mono button.", /cemetech\.net\/forum\/posting\.php/, () => 
 	button.type = "button";
 	button.classList = "button";
 	button.accessKey = "m";
-	button.name = "addbbcode22";
 	button.style = "font-family: monospace;";
 	button.onclick = () => bbstyle(22);
 	button.onmouseover = () => helpline('m');
 
 	button.value = "Mono";
+
+	container.appendChild(button);
+	document.querySelector(".code-buttons:first-child").appendChild(container);
+});
+
+new GlobalTweak("Add hr button.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["hr_help"] = "Horizontal Rule: [hr] (alt+h)";
+
+	const container = document.createElement('span');
+	container.classList = "genmed code-button-wrap";
+
+	const button = document.createElement('input');
+	button.type = "button";
+	button.classList = "button";
+	button.accessKey = "h";
+	button.onclick = () => insertAtCursor("\n[hr]");
+	button.onmouseover = () => helpline('hr');
+
+	button.value = "hr";
 
 	container.appendChild(button);
 	document.querySelector(".code-buttons:first-child").appendChild(container);
