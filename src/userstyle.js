@@ -26,8 +26,11 @@ function escapeHtml(text) {
 
 new Tweak("Fix unicode in post titles", /cemetech\.net\/forum\/viewtopic\.php/, () => {
 	const maintitle = document.querySelector(".mainheadmiddle.roundedtop .maintitle");
-
 	maintitle.innerText = unescapeEntities(maintitle.innerText);
+	const pageTitle = document.querySelector("head > title");
+    	pageTitle.textContent = unescapeEntities(pageTitle.textContent);
+	const firstPostTitle = document.getElementsByClassName("post-subject indextramed")[0];
+    	firstPostTitle.textContent = unescapeEntities(firstPostTitle.textContent);
 });
 
 new Tweak("Fix unicode in post titles while listing topics in a subforum.", /cemetech\.net\/forum\/viewforum\.php/, () => {
