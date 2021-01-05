@@ -221,3 +221,12 @@ new GlobalTweak("Add hr button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	container.appendChild(button);
 	document.querySelector(".code-buttons:first-child").appendChild(container);
 });
+
+// also stolen from womp.
+new GlobalTweak("Add color picker.", /cemetech\.net\/forum\/posting\.php/, () => {
+	const i = document.createElement("input");
+    i.type = "color";
+    i.setAttribute("onchange", "bbfontstyle('[color=' + this.value + ']', '[/color]');");
+    i.setAttribute("onmouseover", "helpline('s')");
+    document.querySelector(".code-buttons:first-child").appendChild(i);
+});
