@@ -644,6 +644,12 @@ img[src^="images/smiles"], .topictools_boxes img {
 	vertical-align: middle;
 }
 
+/* hide broken buttons in user profiles (I thought this bug was fixed?!) */
+
+a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
+	display: none;
+}
+
 /* add version information to footer */
 
 
