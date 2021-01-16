@@ -214,20 +214,24 @@ class Sax {
 			return;
 		}
 
-		const textHTML = this.linkify(unescapeEntities(message.text));
+		let textHTML = this.linkify(unescapeEntities(message.text));
 
 		const parent = document.getElementById(Config.MESSAGES_PARENT);
 		const line = document.createElement("li");
 		line.classList.add("sax-message");
 
-		// todo: handle /me & highlights here
+		if (textHTML.split(' ')[0] === "/me") {
+			textHTML = textHTML.substring(4); // 4 === "/me ".length
+			line.classList.add("sax-action");
+		}
+
 		const timestamp = document.createElement("span");
 		timestamp.classList.add("sax-timestamp");
 		timestamp.innerText = message.timestamp.toLocaleTimeString();
 
 		const username = document.createElement("span");
 		username.classList.add("sax-username");
-		username.innerText = "[" + message.from + "]";
+		username.innerText = message.from;
 
 		username.title = this.jidMap[message.from] || "Unknown JID???";
 
@@ -336,7 +340,6 @@ class Sax {
 
 	/**
 	 * Handler takes 3 params: client, username and text
-	 * The username is not sanitized, but the text is sanitized and has been linkified. The text still contains the command.
 	 */
 	static addCommand(name, usage, handler) {
 		Sax.commands[name] = {
