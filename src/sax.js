@@ -169,7 +169,7 @@ class Sax {
 			return true;
 		}
 
-		this.jidMap[nickname] = jid;
+		this.jidMap[nickname] = jid.split('/')[0];
 
 		return true;
 	}
@@ -242,7 +242,7 @@ class Sax {
 		line.appendChild(document.createTextNode(" "));
 		line.appendChild(text);
 
-		if (this.highlightPattern.test(message.text.toLowerCase()) && message.fresh) {
+		if (this.highlightPattern && this.highlightPattern.test(message.text.toLowerCase()) && message.fresh) {
 			line.classList.add("saxhighlight");
 			this.showHighlight(message);
 		}
@@ -299,6 +299,22 @@ class Sax {
 		return result;
 	}
 
+	handleCommand(text) {
+		const command = text.split(/\s+/)[0];
+		// sanity check
+		if (command[0] !== "/") {
+			return;
+		}
+
+		const commandData = Sax.commands[command.substring(1)];
+
+		if (commandData === undefined || commandData.handler === null) {
+			this.connection.muc.groupchat(Config.ROOM_JID, text);
+		} else {
+			commandData.handler(this, this.username, text);
+		}
+	}
+
 	// must be this name exactly for the page to work right
 	do_form_submit(event) {
 		// don't submit the form
@@ -309,7 +325,11 @@ class Sax {
 		const text = input.value.trim();
 
 		if (text !== null && text !== "") {
-			this.connection.muc.groupchat(Config.ROOM_JID, text);
+			if (text[0] === "/") {
+				this.handleCommand(text);
+			} else {
+				this.connection.muc.groupchat(Config.ROOM_JID, text);
+			}
 			input.value = "";
 		}
 	}
@@ -350,8 +370,9 @@ Sax.addCommand("help", "/help to get a list of commands, or /help <command> to g
 	}
 });
 
+// todo: use roster updates so that this command works better
 Sax.addCommand("jid", "/jid <username> to obtain the JID of a user if they have chatted recently.", (client, username, message) => {
-	const name = name.substring(5) // "/jid ".length
+	const name = message.substring(5) // "/jid ".length
 
 	const jid = client.jidMap[name];
 
@@ -384,7 +405,7 @@ Sax.addCommand("ban", "/ban [-stealth] <username or JID> to ban a user.", (clien
 		},
 		(stanza) => {
 			// failure
-			client.consoleMessage("Could not ban " + jid +": " + stanza.querySelector('text').innerText);
+			client.consoleMessage("Could not ban " + jid +": " + stanza.querySelector('text').textContent);
 		});
 	} else {
 		client.consoleMessage("Invalid JID or username (or JID not found): " + usernameOrJID);
@@ -412,7 +433,7 @@ Sax.addCommand("unban", "/unban [-stealth] <username or JID> to unban a user.", 
 		},
 		(stanza) => {
 			// failure
-			client.consoleMessage("Could not unban " + jid +": " + stanza.querySelector('text').innerText);
+			client.consoleMessage("Could not unban " + jid +": " + stanza.querySelector('text').textContent);
 		});
 	} else {
 		client.consoleMessage("Invalid JID or username (or JID not found): " + usernameOrJID);
@@ -436,7 +457,7 @@ Sax.addCommand("banlist", "/banlist to get the list of active bans", (client, us
 		client.consoleMessage(jids.length + " ban(s) active: [" + jids.join(", ") + "]");
 	}, () => {
 		// failure
-		client.consoleMessage("Could not get banlist: " + stanza.querySelector('text').innerText);
+		client.consoleMessage("Could not get banlist: " + stanza.querySelector('text').textContent);
 	});
 });
 
@@ -456,7 +477,7 @@ Sax.addCommand("op", "/op <username or JID> to grant admin permissions to a user
 			connection.muc.groupchat(sax_room, "/me granted ops to " + jid);
 		}, () => {
 			// failure
-			client.consoleMessage("Could not op: " + stanza.querySelector('text').innerText);
+			client.consoleMessage("Could not op: " + stanza.querySelector('text').textContent);
 		});
 	} else {
 		client.consoleMessage("Invalid JID or username (or JID not found): " + usernameOrJID);
@@ -479,7 +500,7 @@ Sax.addCommand("deop", "/deop <username or JID> to revoke admin permissions from
 			connection.muc.groupchat(sax_room, "/me revoked ops from " + jid);
 		}, () => {
 			// failure
-			client.consoleMessage("Could not deop: " + stanza.querySelector('text').innerText);
+			client.consoleMessage("Could not deop: " + stanza.querySelector('text').textContent);
 		});
 	} else {
 		client.consoleMessage("Invalid JID or username (or JID not found): " + usernameOrJID);
@@ -493,17 +514,17 @@ Sax.addCommand("oplist", "/oplist to get the list of admins", (client, username,
 	}).c("query", {
 		"xmlns": "http://jabber.org/protocol/muc#admin"
 	}).c("item", {
-		"affiliation": "outcast"
+		"affiliation": "owner"
 	});
 
 	client.connection.sendIQ(query, () => {
 		// success
 		const jids = Array.from(stanza.querySelectorAll("item")).map(item => item.attributes["jid"].value);
 
-		client.consoleMessage(jids.length + " ban(s) active: [" + jids.join(", ") + "]");
+		client.consoleMessage(jids.length + " op(s) active: [" + jids.join(", ") + "]");
 	}, () => {
 		// failure
-		client.consoleMessage("Could not get banlist: " + stanza.querySelector('text').innerText);
+		client.consoleMessage("Could not get oplist: " + stanza.querySelector('text').textContent);
 	});
 });
 
