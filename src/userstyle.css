@@ -274,7 +274,7 @@ table.forumline table table table:hover {
 
 /* shadows on all boxes */
 
-.mainheadmiddle, #hbot, .banner_container {
+#hbot, .banner_container {
 	box-shadow: -3px 3px 5px #aaa;
 }
 
@@ -284,7 +284,7 @@ table.forumline table table table:hover {
 }
 
 .mainheadmiddle {
-	z-index: -1;
+	z-index: 1;
 }
 
 #page_content_parent {
