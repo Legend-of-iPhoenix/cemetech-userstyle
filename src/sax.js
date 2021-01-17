@@ -224,7 +224,7 @@ class Sax {
 		if (textHTML.split(' ')[0] === "/me") {
 			textHTML = textHTML.substring(4); // 4 === "/me ".length
 			line.classList.add("sax-action");
-			
+
 			action = true;
 		}
 
@@ -547,6 +547,7 @@ function startSAX() {
 	if (window["SAX"]) {
 		window["SAX"]["disconnect"]();
 	}
+	
 	window["SAX"] = new Sax();
 	window["SAX"].connect();
 }
@@ -558,4 +559,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // you should remove this if you aren't a browser extension
 if (document.readyState === "complete" || document.readyState === "loaded" || document.readyState === "interactive") {
 	startSAX();
+
+	// prevent loading of old sax
+	localStorage.setItem("saxng_linecache", "");
 }
