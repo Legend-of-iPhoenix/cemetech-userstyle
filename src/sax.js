@@ -587,6 +587,12 @@ Sax.addCommand("oplist", "/oplist to get the list of admins", (client, username,
 	});
 });
 
+Sax.addCommand("shrug", "/shrug to append ¯\\_(ツ)_/¯ to your message", (client, username, message) => {
+	message = message.substring(7) + " ¯\\_(ツ)_/¯"; // 7 === "/shrug ".length
+
+	client.connection.muc.groupchat(Config.ROOM_JID, message);
+});
+
 function startSAX() {
 	if (window["SAX"]) {
 		window["SAX"]["disconnect"]();
