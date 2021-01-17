@@ -239,6 +239,10 @@ footer {
 	color: #eee !important;
 }
 
+.sax-message a {
+	border: none !important;
+}
+
 /* remove backgrounds */
 
 .navbread {
@@ -663,7 +667,11 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 /* better sax- requires JS changes*/
 
 .sax-action > .sax-message {
-    color: #ddd;
+    /* changing the color is hard because the color scheme is very different between fullscreen/sidebar sax.
+    color: #eee; 
+    */
+   
+   font-style: italic;
 }
 
 #saxHighlight::before {
