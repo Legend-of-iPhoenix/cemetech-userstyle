@@ -580,5 +580,5 @@ if (document.readyState === "complete" || document.readyState === "loaded" || do
 	startSAX();
 
 	// prevent loading of old sax
-	localStorage.setItem("saxng_linecache", "");
+	localStorage.removeItem("saxng_linecache");
 }
