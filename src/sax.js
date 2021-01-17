@@ -531,7 +531,19 @@ Sax.addCommand("oplist", "/oplist to get the list of admins", (client, username,
 	});
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+function startSAX() {
+	if (window["SAX"]) {
+		window["SAX"]["disconnect"]();
+	}
 	window["SAX"] = new Sax();
 	window["SAX"].connect();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	startSAX();
 });
+
+// you should remove this if you aren't a browser extension
+if (document.readyState === "complete" || document.readyState === "loaded" || document.readyState === "interactive") {
+	startSAX();
+}
