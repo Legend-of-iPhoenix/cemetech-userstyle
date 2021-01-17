@@ -232,6 +232,12 @@ footer {
 	display: none;
 }
 
+/* improve sax legibility */
+
+.saxhighlight .sax-message,
+.sax-message a:hover  {
+	color: #eee !important;
+}
 
 /* remove backgrounds */
 
