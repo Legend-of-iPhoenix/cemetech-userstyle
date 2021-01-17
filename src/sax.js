@@ -302,7 +302,7 @@ class Sax {
 	linkify(text) {
 		// this is like, extremely questionable
 		const URL_REGEX = "https?:\\/\\/[A-Za-z0-9\\-\\.+_~:/?#\\[\\]@!$&'()*+,;%=]+";
-		const pattern = new RegExp("\\[.+?]\\(\\s*" + URL_REGEX + "?\\s*\\)|" + URL_REGEX, "g");
+		const pattern = new RegExp("\\[[^\[\n]+?]\\(\\s*" + URL_REGEX + "?\\s*\\)|" + URL_REGEX, "g");
 		const namedUrlPattern = new RegExp("\\[(.+?)]\\(\\s*(" + URL_REGEX + "?)\\s*\\)", '');
 		
 		const matches = text.match(pattern);
