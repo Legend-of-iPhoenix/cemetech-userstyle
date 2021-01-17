@@ -274,8 +274,13 @@ table.forumline table table table:hover {
 
 /* shadows on all boxes */
 
-.mainheadmiddle, .mainbody, #hbot, .banner_container {
+.mainheadmiddle, #hbot, .banner_container {
 	box-shadow: -3px 3px 5px #aaa;
+}
+
+.mainbody {
+	/* not sure what happened here, maybe a cemetech change? Not doing this causes weird, distracting shadows on the front page */
+	box-shadow: -3px -2px 5px #aaa;
 }
 
 .mainheadmiddle {
