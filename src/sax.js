@@ -9,7 +9,9 @@ const Config = {
 
 	// element ids
 	MESSAGES_PARENT: "ajaxinfobox",
-	CHAT_INPUT: "saxtalk"
+	CHAT_INPUT: "saxtalk",
+	HIGHLIGHTS: "saxHighlight",
+	HIGHLIGHT_SOUND: "saxhlsound"
 };
 
 function escapeHtml(text) {
@@ -202,10 +204,25 @@ class Sax {
 		return true; // or the stupid library deletes the handler
 	}
 
-	showHighlight(message) {
-		if (message.fresh) {
-
+	showHighlight(line) {
+		const element = document.getElementById(Config.HIGHLIGHTS);
+		
+		function hide() {
+			element.style.display = "none";
+			element.innerHTML = "";
 		}
+
+		element.onclick = () => {
+			hide();
+
+			window.location.hash = "#sax";
+			document.getElementById(Config.CHAT_INPUT).focus();
+		};
+
+		window.onscroll = hide;
+
+		element.appendChild(line);
+		element.style.display = "block";
 	}
 
 	displayMessage(message) {
@@ -258,9 +275,11 @@ class Sax {
 		line.appendChild(document.createTextNode(" "));
 		line.appendChild(text);
 
-		if (this.highlightPattern && this.highlightPattern.test(message.text.toLowerCase()) && message.fresh) {
+		if (this.highlightPattern && this.highlightPattern.test(message.text)) {
 			line.classList.add("saxhighlight");
-			this.showHighlight(message);
+			if (message.fresh) {
+				this.showHighlight(line.cloneNode(true));
+			}
 		}
 
 		parent.insertBefore(line, parent.firstChild);

@@ -660,6 +660,10 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
     color: #ddd;
 }
 
+#saxHighlight::before {
+	content: "SAX chat widget highlight:";
+}
+
 /* add version information to footer */
 
 
