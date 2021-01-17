@@ -424,7 +424,7 @@ Sax.addCommand("ban", "/ban [-stealth] <username or JID> to ban a user.", (clien
 	if (/\d+@cemetech\.net/.test(usernameOrJID)) { // it's a JID
 		jid = usernameOrJID;
 	} else {
-		jid = client.jidMap[username];
+		jid = client.jidMap[usernameOrJID];
 	}
 
 	if (jid !== undefined && jid !== '') {
@@ -453,7 +453,7 @@ Sax.addCommand("unban", "/unban [-stealth] <username or JID> to unban a user.", 
 	if (/\d+@cemetech\.net/.test(usernameOrJID)) { // it's a JID
 		jid = usernameOrJID;
 	} else {
-		jid = client.jidMap[username];
+		jid = client.jidMap[usernameOrJID];
 	}
 
 	if (jid !== undefined && jid !== '') {
@@ -502,7 +502,7 @@ Sax.addCommand("op", "/op <username or JID> to grant admin permissions to a user
 	if (/\d+@cemetech\.net/.test(usernameOrJID)) { // it's a JID
 		jid = usernameOrJID;
 	} else {
-		jid = client.jidMap[username];
+		jid = client.jidMap[usernameOrJID];
 	}
 
 	if (jid !== undefined && jid !== '') {
@@ -525,7 +525,7 @@ Sax.addCommand("deop", "/deop <username or JID> to revoke admin permissions from
 	if (/\d+@cemetech\.net/.test(usernameOrJID)) { // it's a JID
 		jid = usernameOrJID;
 	} else {
-		jid = client.jidMap[username];
+		jid = client.jidMap[usernameOrJID];
 	}
 
 	if (jid !== undefined && jid !== '') {
