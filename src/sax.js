@@ -531,9 +531,9 @@ Sax.addCommand("op", "/op <username or JID> to grant admin permissions to a user
 	}
 
 	if (jid !== undefined && jid !== '') {
-		connection.muc.owner(Config.ROOM_JID, jid, "op", () => {
+		client.connection.muc.owner(Config.ROOM_JID, jid, "op", () => {
 			// success
-			connection.muc.groupchat(sax_room, "/me granted ops to " + jid);
+			client.connection.muc.groupchat(Config.ROOM_JID, "/me granted ops to " + jid);
 		}, (stanza) => {
 			// failure
 			client.consoleMessage("Could not op: " + stanza.querySelector('text').textContent);
@@ -554,9 +554,9 @@ Sax.addCommand("deop", "/deop <username or JID> to revoke admin permissions from
 	}
 
 	if (jid !== undefined && jid !== '') {
-		connection.muc.owner(Config.ROOM_JID, jid, "op", () => {
+		client.connection.muc.owner(Config.ROOM_JID, jid, "op", () => {
 			// success
-			connection.muc.groupchat(sax_room, "/me revoked ops from " + jid);
+			client.connection.muc.groupchat(Config.ROOM_JID, "/me revoked ops from " + jid);
 		}, (stanza) => {
 			// failure
 			client.consoleMessage("Could not deop: " + stanza.querySelector('text').textContent);
