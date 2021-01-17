@@ -651,22 +651,6 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 
 /* better sax- requires JS changes*/
 
-.sax-username::before {
-	content: '[';
-}
-
-.sax-username::after {
-    content: ']';
-}
-
-.sax-action > .sax-username::before {
-	content: "***";
-}
-
-.sax-action > .sax-username::after {
-	content: '';
-}
-
 .sax-action > .sax-message {
     color: #ddd;
 }

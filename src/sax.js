@@ -220,24 +220,36 @@ class Sax {
 		const line = document.createElement("li");
 		line.classList.add("sax-message");
 
+		let action = false;
 		if (textHTML.split(' ')[0] === "/me") {
 			textHTML = textHTML.substring(4); // 4 === "/me ".length
 			line.classList.add("sax-action");
+			
+			action = true;
 		}
 
 		const timestamp = document.createElement("span");
 		timestamp.classList.add("sax-timestamp");
 		timestamp.innerText = message.timestamp.toLocaleTimeString();
+		line.dataset.timestamp = message.timestamp.toString();
 
 		const username = document.createElement("span");
 		username.classList.add("sax-username");
-		username.innerText = message.from;
+
+		if (action) {
+			username.innerText = "***" + message.from;
+		} else {
+			username.innerText = "[" + message.from + "]";
+		}
+
+		line.dataset.username = message.from;
 
 		username.title = this.jidMap[message.from] || "Unknown JID???";
 
 		const text = document.createElement("span");
 		text.classList.add("sax-message");
 		text.innerHTML = textHTML;
+		line.dataset.rawText = message.text;
 
 		// .append would be nice here but IE doesn't support it, naturally.
 		line.appendChild(timestamp);
