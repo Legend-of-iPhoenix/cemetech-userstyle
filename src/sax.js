@@ -484,12 +484,12 @@ Sax.addCommand("banlist", "/banlist to get the list of active bans", (client, us
 		"affiliation": "outcast"
 	});
 
-	client.connection.sendIQ(query, () => {
+	client.connection.sendIQ(query, (stanza) => {
 		// success
 		const jids = Array.from(stanza.querySelectorAll("item")).map(item => item.attributes["jid"].value);
 
 		client.consoleMessage(jids.length + " ban(s) active: [" + jids.join(", ") + "]");
-	}, () => {
+	}, (stanza) => {
 		// failure
 		client.consoleMessage("Could not get banlist: " + stanza.querySelector('text').textContent);
 	});
@@ -509,7 +509,7 @@ Sax.addCommand("op", "/op <username or JID> to grant admin permissions to a user
 		connection.muc.owner(Config.ROOM_JID, jid, "op", () => {
 			// success
 			connection.muc.groupchat(sax_room, "/me granted ops to " + jid);
-		}, () => {
+		}, (stanza) => {
 			// failure
 			client.consoleMessage("Could not op: " + stanza.querySelector('text').textContent);
 		});
@@ -532,7 +532,7 @@ Sax.addCommand("deop", "/deop <username or JID> to revoke admin permissions from
 		connection.muc.owner(Config.ROOM_JID, jid, "op", () => {
 			// success
 			connection.muc.groupchat(sax_room, "/me revoked ops from " + jid);
-		}, () => {
+		}, (stanza) => {
 			// failure
 			client.consoleMessage("Could not deop: " + stanza.querySelector('text').textContent);
 		});
@@ -551,12 +551,12 @@ Sax.addCommand("oplist", "/oplist to get the list of admins", (client, username,
 		"affiliation": "owner"
 	});
 
-	client.connection.sendIQ(query, () => {
+	client.connection.sendIQ(query, (stanza) => {
 		// success
 		const jids = Array.from(stanza.querySelectorAll("item")).map(item => item.attributes["jid"].value);
 
 		client.consoleMessage(jids.length + " op(s) active: [" + jids.join(", ") + "]");
-	}, () => {
+	}, (stanza) => {
 		// failure
 		client.consoleMessage("Could not get oplist: " + stanza.querySelector('text').textContent);
 	});
