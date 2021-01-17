@@ -6,6 +6,8 @@ const Config = {
 	BOSH_SERVICE: "/xmpp/http-bind", // https://xmpp.org/extensions/xep-0124.html
 	LINE_LIMIT: 30, // server-enforced max of 50
 	AUTH_RETRY_LIMIT: 1,
+	NOTIFICATION_ICON: "/img/icon/logoicon_128.png",
+	NOTIFICATION_DURATION: 6000, // ms
 
 	// element ids
 	MESSAGES_PARENT: "ajaxinfobox",
@@ -204,7 +206,7 @@ class Sax {
 		return true; // or the stupid library deletes the handler
 	}
 
-	showHighlight(line) {
+	showHighlight(message, line) {
 		const element = document.getElementById(Config.HIGHLIGHTS);
 		
 		function hide() {
@@ -223,6 +225,29 @@ class Sax {
 
 		element.appendChild(line);
 		element.style.display = "block";
+
+		this.notify("SAX highlight from " + message.from, message.text);
+	}
+
+	notify(title, text) {
+		if ("Notification" in window) {
+			if (Notification.permission === "granted") {
+				const notification = new Notification(title, {
+					"body": text,
+					"icon": Config.NOTIFICATION_ICON
+				});
+
+				setTimeout(notification.close.bind(notification), Config.NOTIFICATION_DURATION);
+			} else if (Notification.permission !== "denied") {
+				try {
+					Notification.requestPermission().then(() => {
+						this.doNotification(title, text);
+					});
+				} catch (e) {
+					// don't bother
+				}
+			}
+		}
 	}
 
 	displayMessage(message) {
@@ -278,7 +303,7 @@ class Sax {
 		if (this.highlightPattern && this.highlightPattern.test(message.text)) {
 			line.classList.add("saxhighlight");
 			if (message.fresh) {
-				this.showHighlight(line.cloneNode(true));
+				this.showHighlight(message, line.cloneNode(true));
 			}
 		}
 
