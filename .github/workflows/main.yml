@@ -27,7 +27,7 @@ jobs:
           source: src
     
       - name: "publish"
-      - uses: trmcnvn/firefox-addon@v1
+        uses: trmcnvn/firefox-addon@v1
         with:
           # uuid is only necessary when updating an existing addon,
           # omitting it will create a new addon
