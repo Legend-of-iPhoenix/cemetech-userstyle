@@ -6,7 +6,8 @@
   "content_scripts": [{
     "css": ["userstyle.css"],
     "js": ["core.js", "userstyle.js", "parser.js", "columnresizer.js"],
-    "matches": ["https://www.cemetech.net/*"]
+    "matches": ["https://www.cemetech.net/*"],
+    "run_at": "document_start"
   }],
   "web_accessible_resources": [
   	"sax.js"
