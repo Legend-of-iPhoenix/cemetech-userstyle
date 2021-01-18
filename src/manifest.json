@@ -1,15 +1,22 @@
 {
   "manifest_version": 2,
   "name": "iPhoenix's Cemetech Userstyle",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Adds a spiffy userstyle to cemetech.net",
-  "content_scripts": [{
-    "css": ["userstyle.css"],
-    "js": ["core.js", "userstyle.js", "parser.js", "columnresizer.js"],
-    "matches": ["https://www.cemetech.net/*"],
-    "run_at": "document_start"
-  }],
+  "content_scripts": [
+    {
+      "css": ["userstyle.css"],
+      "js": ["core.js", "parser.js", "columnresizer.js"],
+      "matches": ["https://www.cemetech.net/*"],
+      "run_at": "document_start"
+    },
+    {
+      "js": ["userstyle.js"],
+      "matches": ["https://www.cemetech.net/*"],
+      "run_at": "document_idle"
+    }
+  ],
   "web_accessible_resources": [
-  	"sax.js"
+    "sax.js"
   ]
 }
