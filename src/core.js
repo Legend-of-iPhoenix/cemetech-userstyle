@@ -75,6 +75,7 @@ window.addEventListener("load", () => {
 if (chrome) {
 	const script = document.createElement("script");
 	script.src = chrome.runtime.getURL("sax.js");
+	script.charset = "utf-8";
 	document.body.appendChild(script);
 }
 
