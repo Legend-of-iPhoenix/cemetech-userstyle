@@ -68,7 +68,7 @@ class GlobalTweak extends Tweak {
 	}
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
 	Tweak.execute(window.location.href);
 });
 
