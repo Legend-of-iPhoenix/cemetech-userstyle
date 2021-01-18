@@ -6,6 +6,7 @@
   "content_scripts": [{
     "css": ["userstyle.css"],
     "js": ["core.js", "userstyle.js"],
-    "matches": ["https://www.cemetech.net/*"]
+    "matches": ["https://www.cemetech.net/*"],
+    "run_at": "document_start"
   }]
 }
