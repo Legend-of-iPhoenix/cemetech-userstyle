@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "iPhoenix's Cemetech Userstyle",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Adds a spiffy userstyle to cemetech.net",
   "content_scripts": [
     {
