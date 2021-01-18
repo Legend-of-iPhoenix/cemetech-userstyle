@@ -594,6 +594,10 @@ Sax.addCommand("shrug", "/shrug to append ¯\\_(ツ)_/¯ to your message", (clie
 });
 
 function startSAX() {
+	if (window["sax_uid"] === -1) { // don't try to connect if the user isn't signed in
+		return;
+	}
+
 	if (window["SAX"]) {
 		window["SAX"]["disconnect"]();
 	}
