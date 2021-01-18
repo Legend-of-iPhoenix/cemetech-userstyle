@@ -18,14 +18,15 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v1
-
+    
       - name: "web-ext build"
         id: web-ext-build
         uses: kewisch/action-web-ext@v1
         with:
           cmd: build
           source: src
-      - name: "publish"  
+    
+      - name: "publish"
       - uses: trmcnvn/firefox-addon@v1
         with:
           # uuid is only necessary when updating an existing addon,
