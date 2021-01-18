@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+  
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  sign:
+    name: "Release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v1
+
+      - name: "web-ext build"
+        id: web-ext-build
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: build
+          source: src
+      - name: "publish"  
+      - uses: trmcnvn/firefox-addon@v1
+        with:
+          # uuid is only necessary when updating an existing addon,
+          # omitting it will create a new addon
+          uuid: '{afa62fd6-94ef-471f-b3d7-655451b263bf}'
+          xpi:  ${{ steps.web-ext-build.outputs.target }}
+          manifest: src/manifest.json
+          api-key: ${{ secrets.AMO_SIGN_KEY }}
+          api-secret: ${{ secrets.AMO_SIGN_SECRET }}
