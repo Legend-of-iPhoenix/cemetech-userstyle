@@ -230,3 +230,15 @@ new GlobalTweak("Add color picker.", /cemetech\.net\/forum\/posting\.php/, () =>
     i.setAttribute("onmouseover", "helpline('s')");
     document.querySelector(".code-buttons:first-child").appendChild(i);
 });
+
+// needs to run instantly
+(() => {
+	const runtime = chrome === undefined ? (browser === undefined ? undefined : browser.extension) : chrome.runtime;
+
+	if (runtime) {
+		const script = document.createElement("script");
+		script.src = runtime.getURL("sax.js");
+		script.charset = "utf-8";
+		document.body.appendChild(script);
+	}
+})();

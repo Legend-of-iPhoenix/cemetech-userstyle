@@ -72,12 +72,5 @@ window.addEventListener("load", () => {
 	Tweak.execute(window.location.href);
 });
 
-if (chrome) {
-	const script = document.createElement("script");
-	script.src = chrome.runtime.getURL("sax.js");
-	script.charset = "utf-8";
-	document.body.appendChild(script);
-}
-
 // make sure this is always the line one in the file for future maintainers.
 console.log("Cemetech Userstyles v2.2.0 by _iPhoenix_ and contributors loaded.")
