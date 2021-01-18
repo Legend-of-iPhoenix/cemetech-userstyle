@@ -134,8 +134,7 @@ div.staffpixsmall img {
 }
 
 .mainlowermiddle {
-	height: 0 !important;
-	border-bottom: none !important;
+	display: none !important;
 }
 
 .mainbody {
@@ -179,7 +178,7 @@ div.staffpixsmall img {
 }
 
 .mainbodyinner {
-	padding: 0 !important;
+	padding: 0 0.1875rem !important;
 }
 
 .mainbodyinner>*:not(ul):not(ol) {
@@ -233,6 +232,16 @@ footer {
 	display: none;
 }
 
+/* improve sax legibility */
+
+.saxhighlight .sax-message,
+.sax-message a:hover  {
+	color: #eee !important;
+}
+
+.sax-message a {
+	border: none !important;
+}
 
 /* remove backgrounds */
 
@@ -251,7 +260,9 @@ footer {
 .nav-section__item,
 .file-detail__download-button,
 .forum-action-button,
-.post-action-button {
+.post-action-button,
+.file-category,
+table.forumline table table table {
 	transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -262,10 +273,46 @@ footer {
 }
 
 .forum-action-button:hover,
-.post-action-button:hover {
+.post-action-button:hover,
+table.forumline table table table:hover {
 	box-shadow: -2px 2px 3px #aaa;
 }
 
+.file-category:hover {
+    box-shadow: -1px 1px 2px #aaa;
+}
+
+/* shadows on all boxes */
+
+#hbot, .banner_container {
+	box-shadow: -3px 3px 5px #aaa;
+}
+
+.mainbody {
+	/* not sure what happened here, maybe a cemetech change? Not doing this causes weird, distracting shadows on the front page */
+	box-shadow: -3px -2px 5px #aaa;
+}
+
+.mainheadmiddle {
+	z-index: 1;
+}
+
+#page_content_parent {
+	padding-left: 0.5rem !important;
+}
+
+.banner_container {
+	border-radius: 23px 23px 0 0; /* to match the image*/
+}
+
+
+/* ... & fix resulting issue with mobile */
+
+@media (max-width: 60em) {
+	#page_content_parent {
+		padding-left: 0 !important;
+	}
+}
 
 /* make back to top arrows more discreet */
 
@@ -448,6 +495,188 @@ div.code-buttons {
 	resize: vertical;
 }
 
+
+/* force maximum size on avatars */
+
+.profile_avatar > img {
+	max-width: 80px;
+	max-height: 80px;
+}
+
+
+/* fix fuzzy jstified */
+
+canvas#screen, canvas#big_screen_canvas {
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+
+/* fix overflowing text in posts on long words */
+
+.middle-post.post-body {
+	overflow-wrap: break-word;	
+}
+
+
+/* fullscreen post editor */
+
+.posteditor_columns {
+	display: none;
+}
+
+.posteditor_columns.visible {
+	display: flex;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	z-index: 1000;
+
+	background-color: #bbb;
+}
+
+.column {
+	flex: 1 0 1px;
+	display: flex;
+	flex-direction: column;
+	background-color: #eee;
+	padding: 3px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	box-shadow: 0px 0px 8px #000000;
+	margin: 5px 0px;
+	min-width: 0;
+}
+
+.column:last-of-type  {
+	margin-right: 5px;
+}
+
+.column:first-of-type {
+	margin-left: 5px;
+}
+
+.column.collapsed {
+	width: 30px;
+	flex: 0 0 auto !important;	
+}
+
+.column.collapsed > * {
+	display: none;
+}
+
+.column.collapsed > span.title {
+	writing-mode: vertical-rl;
+	line-height: 30px;
+	display: block;
+
+	flex: 0 0 auto;
+}
+
+.resize_handle {
+	cursor: col-resize;
+	width: 12px;
+	flex: 0 0 auto;
+}
+
+div#realtime_preview {
+	flex: 1 0 1px; /* flex-basis must be set to anything other than auto */
+	margin: 0.5em;
+	padding: 0.5em;
+
+	background-color: #ddd;
+
+	max-width: 100%;
+
+	overflow: auto;
+}
+
+div#realtime_preview_error {
+	background-color: #ff6961;
+
+	padding: 1em;
+	font-size: 120%;
+}
+
+textarea#fullscreen_editor {
+	flex: 1 0 auto;
+	margin: 0.5em;
+	padding: 0.5em;
+
+	resize: none;
+}
+
+
+/* widget to open fullscreen editor */
+
+span#fullscreen_widget {
+	margin-top: 0.5em;
+	margin-left: -1em;
+	position: absolute;
+	z-index: 1000;
+
+	font-size: 1rem;
+
+	opacity: 75%;
+}
+
+span#fullscreen_widget:hover {
+	transition: all 0.5s;
+	font-size: 1.5rem;
+	opacity: 100%;
+}
+
+textarea.typepost {
+	padding-right: 1rem;
+}
+
+/* spoilers */
+
+span[style*="font-size: 1px"], span[style*="font-size: 2px"] {
+	font-size: inherit !important;
+	filter: blur(0.5em);
+}
+
+span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
+	transition: all 1s;
+	filter: blur(0);
+}
+
+/* quickstart margins */
+
+.quickstart {
+	margin: 1em;
+}
+
+/* center some images */
+
+img[src^="images/smiles"], .topictools_boxes img {
+	vertical-align: middle;
+}
+
+/* hide broken buttons in user profiles (I thought this bug was fixed?!) */
+
+a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
+	display: none;
+}
+
+/* better sax- requires JS changes*/
+
+.sax-action > .sax-message {
+    /* changing the color is hard because the color scheme is very different between fullscreen/sidebar sax.
+    color: #eee; 
+    */
+   
+   font-style: italic;
+}
+
+#saxHighlight::before {
+	content: "SAX chat widget highlight:";
+}
 
 /* add version information to footer */
 
