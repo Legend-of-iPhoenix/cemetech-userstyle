@@ -678,6 +678,12 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 	content: "SAX chat widget highlight:";
 }
 
+/* hide nav stuff nobody uses */
+
+.topictools_rightbox span.nav {
+	display: none;
+}
+
 /* add version information to footer */
 
 
