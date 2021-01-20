@@ -185,7 +185,7 @@ new Tweak("Redo Emoji Table", /cemetech\.net\/forum\/posting\.php/, () => {
 	const loc = document.querySelector("#page_content_parent > form > div.mainbody > div > table > tbody");
 	loc.querySelector("tr:nth-child(3) > td.row1").firstElementChild.replaceWith(emojiTbl);
 	loc.querySelector("tr:nth-child(3) > td.row2 > div:nth-child(5)").style.marginBottom = "10px";
-	document.querySelector("#page_content_parent > div:nth-child(7) > div > iframe").width = "99%";
+	document.querySelector("#page_content_parent > div.mainbody > div > iframe").width = "99%";
 	//Add placeholder texts
 	document.getElementsByName("subject")[0].placeholder = "Subject";
 	document.getElementsByName("message")[0].placeholder = "Message Body";
