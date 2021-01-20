@@ -694,6 +694,6 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 /* make sure this style is always the last one in the style sheet for future maintainers */
 
 footer::after {
-	content: '\A Cemetech Userstyles v3.0.2 by _iPhoenix_ and contributors';
+	content: '\A Cemetech Userstyles v3.0.3 by _iPhoenix_ and contributors';
 	white-space: pre-wrap;
 }
