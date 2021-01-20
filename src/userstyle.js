@@ -240,6 +240,15 @@ new GlobalTweak("Add color picker.", /cemetech\.net\/forum\/posting\.php/, () =>
     document.querySelector(".code-buttons:first-child").appendChild(i);
 });
 
+new GlobalTweak("Add H1-H6 selector.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["he_help"] = "Header style: [h1]text[/h1]";
+	var headerContainer = document.createElement('span');
+	headerContainer.innerHTML = "Header style: <select name='addbbcode42' onchange=\"bbfontstyle('[h' + this.selectedIndex + ']', '[/h' + this.selectedIndex + ']');this.selectedIndex=0;\" onmouseover=\"helpline(\'he\')\"><option value='Default' selected>Default</option><option value='h1'>h1</option><option value='h2'>h2</option><option value='h3'>h3</option><option value='h4'>h4</option><option value='h5'>h5</option><option value='h6'>h6</option></select>";
+	//Insert it before 'Close Tags'
+	DOMInsertLoc = document.querySelector(".code-buttons:nth-of-type(2)");
+	DOMInsertLoc.insertBefore(headerContainer, DOMInsertLoc.lastChild.previousSibling);
+});
+
 // needs to run instantly
 (() => {
 	const runtime = chrome === undefined ? (browser === undefined ? undefined : browser.extension) : chrome.runtime;
