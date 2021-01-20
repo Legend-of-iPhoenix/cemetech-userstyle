@@ -320,13 +320,11 @@ table.forumline table table table:hover {
 
 /* make back to top arrows more discreet */
 
-a[href="#top"],
-a[href="#Top"] {
+a[href="#top" i]{
 	visibility: hidden !important;
 }
 
-a[href="#top"]::before,
-a[href="#Top"]::before {
+a[href="#top" i]::before {
 	content: '↑';
 	visibility: visible;
 }
@@ -671,11 +669,11 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 /* better sax- requires JS changes*/
 
 .sax-action > .sax-message {
-    /* changing the color is hard because the color scheme is very different between fullscreen/sidebar sax.
-    color: #eee; 
-    */
-   
-   font-style: italic;
+	/* changing the color is hard because the color scheme is very different between fullscreen/sidebar sax.
+	color: #eee; 
+	*/
+
+	font-style: italic;
 }
 
 #saxHighlight::before {
