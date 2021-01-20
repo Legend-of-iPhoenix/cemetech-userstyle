@@ -686,6 +686,12 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 	display: none;
 }
 
+/* better emote display */
+
+ .hiddenEmoji {
+ 	display: none;
+ }
+
 /* add version information to footer */
 
 

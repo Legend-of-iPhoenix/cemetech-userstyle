@@ -163,6 +163,39 @@ new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, (
 	realignFullscreenWidget();
 });
 
+new Tweak("Redo Emoji Table", /cemetech\.net\/forum\/posting\.php/, () => {
+	//new emoji table
+	var emojiTbl = document.createElement("table");
+
+	var emojisArr = [[":)", "icon_smile.gif", "Smile"], [":(", "icon_sad.gif", "Sad"], [":D", "icon_biggrin.gif", "Very Happy"], [":o", "icon_eek.gif", "Surprised"], [":?", "icon_confused.gif", "Confused"], ["8)", "icon_cool.gif", "Cool"], [":lol:", "icon_lol.gif", "Laughing"], [":x", "icon_mad.gif", "Mad"], [":P", "icon_razz.gif", "Razz"], [":evil:", "icon_twisted.gif", "Evil or Very Mad"], [":roll:", "icon_rolleyes.gif", "Rolling Eyes"], [":wink:", "icon_wink.gif", "Wink"], [":wacko:", "wacko.gif", "Wacko"], [":|", "icon_neutral.gif", "Neutral"], [":sleep:", "sleep.gif", "Sleep"], [":blink:", "blink.gif", "Blink"], [":cry:", "crying.gif", "Crying"], [":dry:", "dry.gif", "Dry"], [":unsure:", "unsure.gif", "Unsure"], ["@_@", "icon_shock.gif", "Shock"], [":73:", "73.gif", "TI-73"], [":83p:", "83p.gif", "TI-83+"], [":86:", "86.gif", "TI-86"], [":83pse:", "83pse.gif", "TI-83+ SE"], [":84pse:", "84pse.gif", "TI-84+ SE"], [":84p:", "84p.gif", "TI-84+"], [":89:", "89.gif", "TI-89"], [":89ti:", "89ti.gif", "TI-89 Titanium"], [":!:", "icon_exclaim.gif", "Exclamation"], [":?:", "icon_question.gif", "Question"], [":arrow:", "icon_arrow.gif", "Arrow"], [":altevil:", "icon_evil.gif", "Evil 2"], [":mrgreen:", "icon_mrgreen.gif", "Mr Green"], [":redface:", "icon_redface.gif", "Red Face"], [":altsurprised:", "icon_surprised.gif", "Surprised 2"], [":shock:", "shock.gif", "Shock 2"], [":idea:", "icon_idea.gif", "Idea"], [":thumbsup:", "goodidea.gif", "Thumbs Up"], [":thumbsdown:", "badidea.gif", "Thumbs Down"], [":dcs7:", "dcs7_chevron.png", "Doors CS 7"], ["j/k", "jksmilie.gif", "Just Kidding"], [":calc:", "calc.gif", "Graphing Calculator"], [":84pce:", "84pce.gif", "TI-84+ CE"], ["owo", "owo.png", "Smiling Cat"]];
+
+	var emojiCon = "<tbody style='display: table-header-group;'><tr align='center'><td colspan='4'><b>Emoticons</b></td>";
+	emojisArr.forEach(function (index, i) {
+		if (!(i % 4)) {
+			emojiCon += "</tr>";
+			if (i === 20) emojiCon += "</tbody><tbody id='moreEmoji' class='hiddenEmoji'>";
+			emojiCon += "<tr align='center'>";
+		}
+		emojiCon += "<td width='25%'><a href=\"javascript:emoticon('" + index[0] + "')\"><img src='images/smiles/" + index[1] + "' alt='" + index[2] + "' title='" + index[2] + "'></a></td>";
+	});
+	emojiCon += "</tbody><tr align='center'><td colspan='4'><a class='cursor-pointer' onclick='document.getElementById(\"moreEmoji\").classList.toggle(\"hiddenEmoji\"); this.textContent = this.textContent.replace(/(more|less)/g,$1=>$1===\"more\"?\"less\":\"more\");'>View more emoticons</a></td></tr>";
+	emojiTbl.style = "margin: auto; width: 160px";
+	emojiTbl.innerHTML = emojiCon;
+	//Replace old emoji table
+	const loc = document.querySelector("#page_content_parent > form > div.mainbody > div > table > tbody");
+	loc.querySelector("tr:nth-child(3) > td.row1").firstElementChild.replaceWith(emojiTbl);
+	loc.querySelector("tr:nth-child(3) > td.row2 > div:nth-child(5)").style.marginBottom = "10px";
+	document.querySelector("#page_content_parent > div.mainbody > div > iframe").width = "99%";
+	//Add placeholder texts
+	document.getElementsByName("subject")[0].placeholder = "Subject";
+	document.getElementsByName("message")[0].placeholder = "Message Body";
+
+	//Remove some useless junk
+	loc.querySelector("tr:nth-child(2) > td.row1").textContent = "";
+	loc.querySelector("tr:nth-child(4) > td.row1").innerHTML = "";
+
+});
+
 // mostly stolen from womp
 new GlobalTweak("Fix console error with youtube button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
