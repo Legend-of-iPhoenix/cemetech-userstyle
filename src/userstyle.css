@@ -645,6 +645,10 @@ textarea.typepost {
 span[style*="font-size: 1px"], span[style*="font-size: 2px"] {
 	font-size: inherit !important;
 	filter: blur(0.5em);
+
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 0 2px;
 }
 
 span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
