@@ -159,7 +159,6 @@ div.staffpixsmall img {
 	top: 1px !important;
 }
 
-.mainbody,
 .sideheadtop,
 .mainheadmiddle {
 	margin-bottom: 1px !important;
@@ -171,7 +170,7 @@ div.staffpixsmall img {
 	border-top-right-radius: 8px !important;
 }
 
-.sidebar__section {
+.sidebar__section, .mainbody {
 	margin-bottom: 0.625rem !important;
 	margin-top: 0 !important;
 }
@@ -292,17 +291,15 @@ table.forumline table table table:hover {
 
 /* shadows on all boxes */
 
-#hbot, .banner_container {
+#hbot,
+.banner_container,
+.mainbody,
+.mainheadmiddle {
 	box-shadow: -3px 3px 5px #aaa;
 }
 
-.mainbody {
-	/* not sure what happened here, maybe a cemetech change? Not doing this causes weird, distracting shadows on the front page */
-	box-shadow: -3px -2px 5px #aaa;
-}
-
 .mainheadmiddle {
-	z-index: 1;
+	z-index: -1 !important;
 }
 
 #page_content_parent {
