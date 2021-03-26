@@ -415,8 +415,8 @@ img[src$="/vote_rcap.gif"] {
 	background: #7B291B;
 }
 
-.user-info-row.pips img[src*="pips"],
-.profile_brief .gen:nth-child(6) img[src*="pips"] {
+.user-info-row.pips img:not([src$='expert.png']),
+.profile_brief .gen:nth-child(6) img:not([src$='expert.png']) {
 	visibility: hidden;
 }
 
@@ -472,9 +472,9 @@ img[src$="/vote_rcap.gif"] {
 
 .user-info-row.pips img[src$='pips/expert.png'],
 .profile_brief .gen:nth-child(6) img[src*="pips/expert.png"] {
-	/* this doesn't work- needs to be fixed */
-	content: url("templates/Cemetech6/images/pips/expert.png");
-	height: auto;
+	background-color: #ddd;
+	top: -2px;
+	position: relative;
 }
 
 
