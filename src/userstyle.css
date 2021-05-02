@@ -693,9 +693,15 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 
 /* better emote display */
 
- .hiddenEmoji {
- 	display: none;
- }
+.hiddenEmoji {
+	display: none;
+}
+
+/* fix stats graph */
+
+#forum-post-stats > div.plotly > div[style] {
+	height: 450px !important;
+}
 
 /* add version information to footer */
 
