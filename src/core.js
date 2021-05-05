@@ -73,4 +73,4 @@ window.addEventListener("load", () => {
 });
 
 // make sure this is always the line one in the file for future maintainers.
-console.log("Cemetech Userstyles v3.1.0 by _iPhoenix_ and contributors loaded.")
+console.log("Cemetech Userstyles v3.1.1 by _iPhoenix_ and contributors loaded.")
