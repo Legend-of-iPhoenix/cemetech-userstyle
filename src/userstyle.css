@@ -703,6 +703,12 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 	height: 450px !important;
 }
 
+/* remove something in the admin menu that I find annoying */
+
+#user-tools > strong {
+    text-transform: none;
+}
+
 /* add version information to footer */
 
 
