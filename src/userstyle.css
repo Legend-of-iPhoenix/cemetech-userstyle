@@ -709,6 +709,46 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
     text-transform: none;
 }
 
+/* stuff for sc3 fullscreen- not sure how much of this code was written by me, thanks NoahK! */
+
+body.sc3Fullscreen header {
+	visibility: hidden !important;
+	height: 0 !important;
+}
+
+body.sc3Fullscreen .sidebar {
+	height: 0 !important;
+	overflow-y: hidden !important;
+}
+
+body.sc3Fullscreen .sideheadtop, body.sc3Fullscreen .roundedtop {
+	margin: 0 0 0 0 !important;
+	padding: 0 !important;
+	min-height: 0 !important;
+	height: 0 !important;
+	visibility: hidden !important;
+	border: none !important;
+}
+
+body.sc3Fullscreen .mainbody {
+	padding: 0 !important;
+}
+
+body.sc3Fullscreen #page_content_parent {
+	width: 100% !important;
+	position: absolute !important;
+	top: 0 !important;
+}
+
+body.sc3Fullscreen #content_wrapper {
+	max-width: 100% !important;
+	width: 100% !important;
+	top: 0 !important;
+	padding: none !important;
+	padding-top: 0 !important;
+	position: absolute !important;
+}
+
 /* add version information to footer */
 
 
