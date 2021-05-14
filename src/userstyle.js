@@ -207,7 +207,6 @@ new Tweak("Redo Emoji Table", /cemetech\.net\/forum\/posting\.php/, () => {
 	//Remove some useless junk
 	loc.querySelector("tr:nth-child(2) > td.row1").textContent = "";
 	loc.querySelector("tr:nth-child(4) > td.row1").innerHTML = "";
-
 });
 
 // mostly stolen from womp
@@ -307,3 +306,5 @@ new GlobalTweak("Add H1-H6 selector.", /cemetech\.net\/forum\/posting\.php/, () 
 		document.body.appendChild(script);
 	}
 })();
+
+Tweak.execute(window.location.href);

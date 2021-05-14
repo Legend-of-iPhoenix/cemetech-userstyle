@@ -37,7 +37,7 @@ class Tweak {
 	}
 
 	/**
-	 * Executes all of the Tweaks that have been registered.
+	 * Executes all of the Tweaks that have been registered. Called at the end of userstyle.js
 	 *
 	 * @public
 	 * @param {string} url The url to check from.
@@ -67,10 +67,6 @@ class GlobalTweak extends Tweak {
 		}
 	}
 }
-
-window.addEventListener("load", () => {
-	Tweak.execute(window.location.href);
-});
 
 // make sure this is always the line one in the file for future maintainers.
 console.log("Cemetech Userstyles v3.1.1 by _iPhoenix_ and contributors loaded.")
