@@ -209,6 +209,33 @@ new Tweak("Redo Emoji Table", /cemetech\.net\/forum\/posting\.php/, () => {
 	loc.querySelector("tr:nth-child(4) > td.row1").innerHTML = "";
 });
 
+new Tweak("Add copy button to code blocks.", /cemetech\.net\/forum\//, () => {
+	const temp = document.createElement("textarea");
+	temp.style = "position: absolute; opacity: 0;";
+	document.body.appendChild(temp);
+
+	Array.from(document.getElementsByClassName("code")).forEach((codeBlock) => {
+		const button = document.createElement("button");
+		button.innerText = "Copy";
+
+		debugger;
+		// needs to be addEventListener instead of .onclick because of spooky document.execCommand
+		button.addEventListener("click", () => {
+			const contents = codeBlock.getElementsByTagName("code")[0].innerText.replace(/\u00A0 \u00A0/g, "\t"); // wtf- 3 spaces?! I have officially seen everything.
+
+			temp.value = contents;
+			temp.select();
+
+			document.execCommand("copy");
+
+			button.innerText = "Copied!";
+			setTimeout(() => button.innerText = "Copy", 2000);
+		});
+
+		codeBlock.insertBefore(button, codeBlock.children[0]);
+	});
+});
+
 // mostly stolen from womp
 new GlobalTweak("Fix console error with youtube button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";

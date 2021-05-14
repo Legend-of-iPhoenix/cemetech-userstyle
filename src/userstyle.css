@@ -184,12 +184,12 @@ div.staffpixsmall img {
 }
 
 .mainbodyinner div.post {
-    margin: 0 !important;
-    padding: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .post-header {
-    padding-top: 0.1875rem;
+	padding-top: 0.1875rem;
 }
 
 footer {
@@ -286,7 +286,7 @@ table.forumline table table table:hover {
 }
 
 .file-category:hover {
-    box-shadow: -1px 1px 2px #aaa;
+	box-shadow: -1px 1px 2px #aaa;
 }
 
 /* shadows on all boxes */
@@ -706,7 +706,7 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 /* remove something in the admin menu that I find annoying */
 
 #user-tools > strong {
-    text-transform: none;
+	text-transform: none;
 }
 
 /* stuff for sc3 fullscreen- not sure how much of this code was written by me, thanks NoahK! */
@@ -747,6 +747,40 @@ body.sc3Fullscreen #content_wrapper {
 	padding: none !important;
 	padding-top: 0 !important;
 	position: absolute !important;
+}
+
+/* copy with tabs button */
+
+div.code button {
+	position: absolute;
+	right: 1px;
+	top: 2px;
+	padding: 1px;
+	border: 1px solid black;
+	border-radius: 2px;
+	height: calc(100% - 2px);
+	max-height: calc(4px + 8pt);
+	box-sizing: border-box;
+	font-size: 8pt;
+	visibility: hidden;
+}
+
+div.code {
+	position: relative;
+}
+
+div.code:hover button {
+	visibility: visible;
+}
+
+div.code button:hover {
+	transition: 50ms;
+	box-shadow: -1px 2px 0px #999;
+	transform: translateY(-1px);
+}
+
+div.code button:active {
+	transform: translateY(0px);
 }
 
 /* add version information to footer */
