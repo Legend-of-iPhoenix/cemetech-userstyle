@@ -783,6 +783,12 @@ div.code button:active {
 	transform: translateY(0px);
 }
 
+/* remove the extra spacing sometimes added to code boxes */
+
+code br+br {
+	display: none;
+}
+
 /* add version information to footer */
 
 
