@@ -237,7 +237,7 @@ new Tweak("Add copy button to code blocks.", /cemetech\.net\/forum\//, () => {
 });
 
 new Tweak("Add karma count to user pages", /cemetech\.net\/forum\/profile\.php/, () => {
-	httpRequest = new XMLHttpRequest();
+	const httpRequest = new XMLHttpRequest();
 
 	if (!httpRequest) return;
 
@@ -247,17 +247,17 @@ new Tweak("Add karma count to user pages", /cemetech\.net\/forum\/profile\.php/,
 		if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
 			const score = JSON.parse(httpRequest.responseText).score;
 			const separator = document.createTextNode(" | ");
-			let link = document.createElement("a");
+			const link = document.createElement("a");
 			const karmaText = document.createTextNode(score + " karma");
 			link.appendChild(karmaText);
-			link.href = "http://decbot.cemetech.net/scores/" + encodeURIComponent(username);
-			let elem = document.querySelectorAll(".profile_brief>.gen")[3];
+			link.href = "https://decbot.cemetech.net/scores/" + encodeURIComponent(username);
+			const elem = document.querySelectorAll(".profile_brief>.gen")[3];
 			elem.appendChild(separator);
 			elem.appendChild(link);
 		}
 	};
 
-	httpRequest.open('GET', 'http://decbot.cemetech.net/api/scores/' + encodeURIComponent(username));
+	httpRequest.open('GET', 'https://decbot.cemetech.net/api/scores/' + encodeURIComponent(username));
 	httpRequest.send();
 });
 
