@@ -18,5 +18,8 @@
   ],
   "web_accessible_resources": [
     "sax.js"
+  ],
+  "permissions": [
+    "http://decbot.cemetech.net/api/*"
   ]
 }

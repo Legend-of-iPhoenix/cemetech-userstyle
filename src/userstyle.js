@@ -236,6 +236,31 @@ new Tweak("Add copy button to code blocks.", /cemetech\.net\/forum\//, () => {
 	});
 });
 
+new Tweak("Add karma count to user pages", /cemetech\.net\/forum\/profile\.php/, () => {
+	httpRequest = new XMLHttpRequest();
+
+	if (!httpRequest) return;
+
+	const username = document.querySelector(".profile_avatar>img").alt.replaceAll(/ /g,"");
+
+	httpRequest.onreadystatechange = () => {
+		if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+			const score = JSON.parse(httpRequest.responseText).score;
+			const separator = document.createTextNode(" | ");
+			let link = document.createElement("a");
+			const karmaText = document.createTextNode(score + " karma");
+			link.appendChild(karmaText);
+			link.href = "http://decbot.cemetech.net/scores/" + encodeURIComponent(username);
+			let elem = document.querySelectorAll(".profile_brief>.gen")[3];
+			elem.appendChild(separator);
+			elem.appendChild(link);
+		}
+	};
+
+	httpRequest.open('GET', 'http://decbot.cemetech.net/api/scores/' + encodeURIComponent(username));
+	httpRequest.send();
+});
+
 // mostly stolen from womp
 new GlobalTweak("Fix console error with youtube button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
