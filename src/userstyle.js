@@ -117,7 +117,7 @@ new Tweak("Completely redo post editor", /cemetech\.net\/forum\/posting\.php/, (
 	columns.classList = "posteditor_columns";
 	form.appendChild(columns);
 
-	columns.innerHTML = "<div class='column' style='flex-grow: 3;'><span class='title'>Preview</span><div id='realtime_preview_error'></div><div id='realtime_preview'></div></div><div class='resize_handle'></div><div class='column' id='editor' style='flex-grow: 3;'><span class='title'>Editor</span><textarea id='fullscreen_editor'></textarea></div>"
+	columns.innerHTML = "<div class='column' style='flex-grow: 3;'><span class='title'>Preview</span><div id='realtime_preview_error'></div><div id='realtime_preview'></div></div><div class='resize_handle'></div><div class='column' id='editor' style='flex-grow: 3;'><span class='title'>Editor<a id='closePreview' style='float:right;cursor:pointer' onclick=\"document.querySelector('.posteditor_columns').classList.remove('visible');\">Close</a></span><textarea id='fullscreen_editor'></textarea></div>"
 
 	const message = document.querySelector("form[name=post] textarea[name=message]");
 	const fullscreen_editor = document.getElementById("fullscreen_editor");
