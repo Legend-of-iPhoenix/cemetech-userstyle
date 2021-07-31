@@ -613,6 +613,10 @@ textarea#fullscreen_editor {
 	resize: none;
 }
 
+a#close_editor {
+	float: right;
+	cursor: pointer;
+}
 
 /* widget to open fullscreen editor */
 
