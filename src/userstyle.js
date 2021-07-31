@@ -285,6 +285,28 @@ new GlobalTweak("Add mono button.", /cemetech\.net\/forum\/posting\.php/, () => 
 	document.querySelector(".code-buttons:first-child").appendChild(container);
 });
 
+// also stolen from womp.
+new GlobalTweak("Add center button.", /cemetech\.net\/forum\/posting\.php/, () => {
+	window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
+	bbtags.push('[center]', '[/center]');
+
+	const container = document.createElement('span');
+	container.classList = "genmed code-button-wrap";
+
+	const button = document.createElement('input');
+	button.type = "button";
+	button.classList = "button";
+	button.accessKey = "j";
+	button.style = "text-align: center;";
+	button.onclick = () => bbstyle(24);
+	button.onmouseover = () => helpline('j');
+
+	button.value = "Center";
+
+	container.appendChild(button);
+	document.querySelector(".code-buttons:first-child").appendChild(container);
+});
+
 new GlobalTweak("Add hr button.", /cemetech\.net\/forum\/posting\.php/, () => {
 	window["hr_help"] = "Horizontal Rule: [hr] (alt+h)";
 
