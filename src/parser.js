@@ -110,6 +110,10 @@ function BBCodeToHTML(text) {
 			open: ()=>'<sub>',
 			close: ()=>'</sub>',
 		},
+		"center": {
+			open: ()=>'<center>',
+			close: ()=>'</center>',
+		},
 		"h1": {
 			open: ()=>'<h1>',
 			close: ()=>'</h1>',
