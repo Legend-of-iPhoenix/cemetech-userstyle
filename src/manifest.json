@@ -6,12 +6,25 @@
   "content_scripts": [
     {
       "css": ["userstyle.css"],
-      "js": ["core.js", "parser.js", "columnresizer.js"],
+      "js": [
+        "tweak.js",
+        "parser.js",
+        "tweaks/post_editor/columnresizer.js"
+      ],
       "matches": ["https://www.cemetech.net/*"],
       "run_at": "document_start"
     },
     {
-      "js": ["userstyle.js"],
+      "js": [
+        "tweaks/post_editor/buttons.js",
+        "tweaks/post_editor/fullscreen.js",
+        "tweaks/misc.js",
+        "tweaks/sc3.js",
+        "tweaks/sidebar.js",
+        "tweaks/uti.js",
+
+        "tail.js"
+      ],
       "matches": ["https://www.cemetech.net/*"],
       "run_at": "document_idle"
     }
