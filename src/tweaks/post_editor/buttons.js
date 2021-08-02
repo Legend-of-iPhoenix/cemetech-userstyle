@@ -56,7 +56,7 @@ new GlobalTweak("Add color picker.", /cemetech\.net\/forum\/posting\.php/, () =>
 	i.type = "color";
 	i.setAttribute("onchange", "bbfontstyle('[color=' + this.value + ']', '[/color]');");
 	i.setAttribute("onmouseover", "helpline('s')");
-	document.querySelector(".code-buttons:first-child").appendChild(i);
+	document.getElementsByName("addbbcode19")[0].parentElement.appendChild(i);
 });
 
 new GlobalTweak("Add H1-H6 selector.", /cemetech\.net\/forum\/posting\.php/, () => {
