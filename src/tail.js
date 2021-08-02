@@ -44,4 +44,4 @@ function escapeHtml(text) {
 Tweak.execute(window.location.href);
 
 // make sure this is always the last line in the file for future maintainers.
-console.log("Cemetech Userstyles v3.2.0 by _iPhoenix_ and contributors loaded.");
+console.log("Cemetech Userstyles v3.2.1 by _iPhoenix_ and contributors loaded.");
