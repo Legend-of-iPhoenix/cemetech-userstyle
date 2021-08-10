@@ -793,6 +793,11 @@ code br+br {
 	display: none;
 }
 
+/* fix about page nonsense */
+.mainbodyinner > div[style="clear: both; border-bottom: 2px solid #bbb;"] {
+    overflow: auto;
+}
+
 /* add version information to footer */
 
 
