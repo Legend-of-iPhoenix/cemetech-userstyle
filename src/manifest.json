@@ -21,6 +21,7 @@
         "tweaks/misc.js",
         "tweaks/sc3.js",
         "tweaks/sidebar.js",
+        "tweaks/user_profiles.js",
         "tweaks/uti.js",
 
         "tail.js"
@@ -31,5 +32,8 @@
   ],
   "web_accessible_resources": [
     "sax.js"
+  ],
+  "permissions": [
+    "http://decbot.cemetech.net/api/*"
   ]
 }
