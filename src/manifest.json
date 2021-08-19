@@ -30,6 +30,11 @@
       "run_at": "document_idle"
     }
   ],
+  "icons": {
+    "16": "img/16.png",
+    "32": "img/32.png",
+    "128": "img/128.png"
+  },
   "web_accessible_resources": [
     "sax.js"
   ],
