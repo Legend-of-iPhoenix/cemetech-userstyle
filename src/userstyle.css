@@ -653,7 +653,7 @@ span[style*="font-size: 1px"], span[style*="font-size: 2px"] {
 }
 
 span[style*="font-size: 1px"]:hover, span[style*="font-size: 2px"]:hover {
-	transition: all 1s;
+	transition: all .2s;
 	filter: blur(0);
 }
 
