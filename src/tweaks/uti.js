@@ -5,11 +5,11 @@ new Tweak("Restyle UTI pages", /cemetech\.net\/projects\/uti/, () => {
 	tr>th{
 		border-bottom: 1px solid #254e6f !important;
 	}
-	section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div.mainheadmiddle:after,div.mainheadmiddle:before,#hbot,.mainbody{
+	section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div.mainheadmiddle:after,div.mainheadmiddle:before,div#hbot,.mainbody{
 		background:#254e6f !important;
 	}
 	.sidebar__section,#hbot{
-		border: 2px solid #19364d;x
+		border: 2px solid #19364d;
 	}
 	a{
 		color: #222;
