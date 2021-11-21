@@ -24,7 +24,7 @@ a.maintitle,
 a.nav,
 aside a,
 a.username,
-li.sax-message a,
+li.sax__message a,
 li.post-datetime a {
 	text-decoration: none !important;
 	background-image: linear-gradient(currentColor, currentColor);
@@ -46,8 +46,8 @@ aside a:hover,
 aside a:focus,
 a.username:hover,
 a.username:focus,
-li.sax-message a:hover,
-li.sax-message a:focus,
+li.sax__message a:hover,
+li.sax__message a:focus,
 li.post-datetime a:hover,
 li.post-datetime a:focus {
 	text-decoration: none !important;
@@ -234,19 +234,19 @@ footer {
 
 
 /* fix stupid sax thing with double author tags */
-
-.sax-username[title^="saxjax@cemetech.net"] {
+/* is this still needed? */
+.sax__username[title^="saxjax@cemetech.net"] {
 	display: none;
 }
 
 /* improve sax legibility */
 
-.saxhighlight .sax-message,
-.sax-message a:hover  {
+.sax__message--highlighted .sax__message-text,
+.sax__message a:hover  {
 	color: #eee !important;
 }
 
-.sax-message a {
+.sax__message a {
 	border: none !important;
 }
 
@@ -337,7 +337,7 @@ a[href="#top" i]::before {
 	width: 14.5rem !important;
 }
 
-.sax-message {
+.sax__message {
 	font-size: 0.675rem !important;
 }
 
@@ -677,7 +677,7 @@ a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
 
 /* better sax- requires JS changes*/
 
-.sax-action > .sax-message {
+.sax-action > .sax__message {
 	/* changing the color is hard because the color scheme is very different between fullscreen/sidebar sax.
 	color: #eee; 
 	*/
