@@ -34,7 +34,7 @@
   	 {
       "resources": [ "sax.js" ],
       "matches": [ "https://www.cemetech.net/*" ],
-	    "use_dynamic_url": "false"
+	    "use_dynamic_url": false
 	 }
   ],
   "host_permissions": [
