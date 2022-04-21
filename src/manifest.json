@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "iPhoenix's Cemetech Userstyle",
   "version": "3.2.1",
   "description": "Adds a spiffy userstyle to cemetech.net",
@@ -31,9 +31,13 @@
     }
   ],
   "web_accessible_resources": [
-    "sax.js"
+  	 {
+      "resources": [ "sax.js" ],
+      "matches": [ "https://www.cemetech.net/*" ],
+	    "use_dynamic_url": "false"
+	 }
   ],
-  "permissions": [
+  "host_permissions": [
     "http://decbot.cemetech.net/api/*"
   ]
 }
