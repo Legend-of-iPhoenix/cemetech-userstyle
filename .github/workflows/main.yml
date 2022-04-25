@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-  
 name: CI
 
 # Controls when the action will run. 
@@ -38,13 +36,29 @@ jobs:
           api-key: ${{ secrets.AMO_SIGN_KEY }}
           api-secret: ${{ secrets.AMO_SIGN_SECRET }}
           
+      - name: "upload firefox build as artifact"
+        uses: actions/upload-artifact@master
+        with:
+          name: userstyle.xpi
+          path: ${{ steps.web-ext-build.outputs.target }} 
+          
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r src.zip src
+          
+      - name: "upload zip"
+        uses: actions/upload-artifact@master
+        with:
+          name: src.zip
+          path: src.zip 
+      
       - name: "publish chrome"
         uses: trmcnvn/chrome-addon@v2
         with:
           # extension is only necessary when updating an existing addon,
           # omitting it will create a new addon
-          extension: abcdefg
-          zip: build/my-addon.zip # need to create zip file
+          extension: jfcdlkkkngaallphcckjjbnokjonloan
+          zip: src.zip
           client-id: ${{ secrets.*wip* }}
           client-secret: ${{ secrets.*wip* }}
           refresh-token: ${{ secrets.*wip* }}
