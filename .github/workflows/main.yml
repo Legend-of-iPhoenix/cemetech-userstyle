@@ -59,8 +59,8 @@ jobs:
           # omitting it will create a new addon
           extension: jfcdlkkkngaallphcckjjbnokjonloan
           zip: src.zip
-          client-id: ${{ secrets.*wip* }}
-          client-secret: ${{ secrets.*wip* }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
           refresh-token: ${{ secrets.*wip* }}
           # optionally specify the visibility of the addon
           publishTarget: default
