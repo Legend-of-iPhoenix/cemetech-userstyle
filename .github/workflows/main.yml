@@ -61,6 +61,6 @@ jobs:
           zip: src.zip
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
-          refresh-token: ${{ secrets.*wip* }}
+          refresh-token: ${{ secrets.CLIENT_REFRESH }}
           # optionally specify the visibility of the addon
           publishTarget: default
