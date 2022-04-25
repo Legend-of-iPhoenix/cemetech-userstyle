@@ -27,7 +27,7 @@ jobs:
           cmd: build
           source: src
     
-      - name: "publish"
+      - name: "publish firefox"
         uses: trmcnvn/firefox-addon@v1
         with:
           # uuid is only necessary when updating an existing addon,
@@ -37,3 +37,16 @@ jobs:
           manifest: src/manifest.json
           api-key: ${{ secrets.AMO_SIGN_KEY }}
           api-secret: ${{ secrets.AMO_SIGN_SECRET }}
+          
+      - name: "publish chrome"
+        uses: trmcnvn/chrome-addon@v2
+        with:
+          # extension is only necessary when updating an existing addon,
+          # omitting it will create a new addon
+          extension: abcdefg
+          zip: build/my-addon.zip # need to create zip file
+          client-id: ${{ secrets.*wip* }}
+          client-secret: ${{ secrets.*wip* }}
+          refresh-token: ${{ secrets.*wip* }}
+          # optionally specify the visibility of the addon
+          publishTarget: default
