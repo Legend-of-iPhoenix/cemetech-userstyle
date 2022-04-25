@@ -30,6 +30,9 @@
       "run_at": "document_idle"
     }
   ],
+  "icons": { 
+     "128": "img/128.png"
+   },
   "host_permissions": [
     "http://decbot.cemetech.net/api/*"
   ]
