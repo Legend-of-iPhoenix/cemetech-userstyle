@@ -30,13 +30,6 @@
       "run_at": "document_idle"
     }
   ],
-  "web_accessible_resources": [
-  	 {
-      "resources": [ "sax.js" ],
-      "matches": [ "https://www.cemetech.net/*" ],
-	    "use_dynamic_url": false
-	 }
-  ],
   "host_permissions": [
     "http://decbot.cemetech.net/api/*"
   ]
