@@ -3,7 +3,7 @@
 
 ## Installation
 #### Chrome
-On **Chrome**, install the extension from the Chrome Web Store here (not linked yet). Please note that the version on the Chrome Web Store may be a few days behind the version here on GitHub due to the Chrome Web Store review process.
+On **Chrome**, install the extension from the Chrome Web Store [here](https://chrome.google.com/webstore/detail/jfcdlkkkngaallphcckjjbnokjonloan/). Please note that the version on the Chrome Web Store may be a few days behind the version here on GitHub due to the Chrome Web Store review process.
 
 Alternatively download the zip file from [the latest release](https://github.com/Legend-of-iPhoenix/cemetech-userstyle/releases/latest) (probably named something like `Legend-of-iPhoenix.cemetech-userstyle.master.src.zip`) and follow the instructions [from this post](https://www.cemetech.net/forum/viewtopic.php?p=287958#287958).
 
