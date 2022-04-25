@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@master
         continue-on-error: true
         with:
-          name: userstyle.xpi
+          name: userstyle
           path: ${{ steps.web-ext-build.outputs.target }} 
           
       - uses: montudor/action-zip@v1
@@ -51,7 +51,7 @@ jobs:
       - name: "upload zip"
         uses: actions/upload-artifact@master
         with:
-          name: src.zip
+          name: src
           path: src.zip 
       
       - name: "publish chrome"
