@@ -27,6 +27,7 @@ jobs:
     
       - name: "publish firefox"
         uses: trmcnvn/firefox-addon@v1
+        continue-on-error: true
         with:
           # uuid is only necessary when updating an existing addon,
           # omitting it will create a new addon
@@ -38,6 +39,7 @@ jobs:
           
       - name: "upload firefox build as artifact"
         uses: actions/upload-artifact@master
+        continue-on-error: true
         with:
           name: userstyle.xpi
           path: ${{ steps.web-ext-build.outputs.target }} 
@@ -53,6 +55,7 @@ jobs:
           path: src.zip 
       
       - name: "publish chrome"
+        continue-on-error: true
         uses: trmcnvn/chrome-addon@v2
         with:
           # extension is only necessary when updating an existing addon,
