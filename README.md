@@ -2,10 +2,16 @@
 *A community-developed userstyle for https://cemetech.net*
 
 ## Installation
-On **Chrome**, download the zip file from [the latest release](https://github.com/Legend-of-iPhoenix/cemetech-userstyle/releases/latest) (probably named something like `Legend-of-iPhoenix.cemetech-userstyle.master.src.zip`) and follow the instructions [from this post](https://www.cemetech.net/forum/viewtopic.php?p=287958#287958).
+### Chrome
+Install the extension from the Chrome Web Store [here](https://chrome.google.com/webstore/detail/jfcdlkkkngaallphcckjjbnokjonloan/). 
+> Please note that the version on the Chrome Web Store may be a few days behind the version here on GitHub due to the Chrome Web Store review process.
 
-On **Firefox**, download the .xpi file from [the latest release](https://github.com/Legend-of-iPhoenix/cemetech-userstyle/releases/latest).
+Alternatively, download the zip file from [the latest release](https://github.com/Legend-of-iPhoenix/cemetech-userstyle/releases/latest) (probably named something like `Legend-of-iPhoenix.cemetech-userstyle.master.src.zip`) and follow the instructions [from this forum post](https://www.cemetech.net/forum/viewtopic.php?p=287958#287958).
 
+### Firefox
+Download the .xpi file from [the latest release](https://github.com/Legend-of-iPhoenix/cemetech-userstyle/releases/latest).
+
+### Safari
 Safari is not officially supported but you can try to install it following the directions linked to [here](https://github.com/Legend-of-iPhoenix/cemetech-userstyle/issues/28#issuecomment-770308450).
 
 ## Full list of changes
