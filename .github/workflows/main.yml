@@ -28,7 +28,6 @@ jobs:
 
         - name: "publish firefox"
           uses: trmcnvn/firefox-addon@v1
-          continue-on-error: true
           with:
             # uuid is only necessary when updating an existing addon,
             # omitting it will create a new addon
@@ -40,7 +39,6 @@ jobs:
 
         - name: "upload firefox build as artifact"
           uses: actions/upload-artifact@master
-          continue-on-error: true
           with:
             name: userstyle
             path: ${{ steps.web-ext-build.outputs.target }} 
@@ -51,7 +49,7 @@ jobs:
         - name: "crzip"    
           uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
           with:
-            extensionDir: 'extension'
+            extensionDir: 'src'
             zipFilePath: 'build/extension.zip'
 
         - name: "fetchtoken"
