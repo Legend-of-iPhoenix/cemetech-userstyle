@@ -13,65 +13,67 @@ on:
   workflow_dispatch:
 
 jobs:
-  sign:
-    name: "Release"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v1
-    
-      - name: "web-ext build"
-        id: web-ext-build
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: build
-          source: src
-    
-      - name: "publish firefox"
-        uses: trmcnvn/firefox-addon@v1
-        continue-on-error: true
-        with:
-          # uuid is only necessary when updating an existing addon,
-          # omitting it will create a new addon
-          uuid: '{afa62fd6-94ef-471f-b3d7-655451b263bf}'
-          xpi:  ${{ steps.web-ext-build.outputs.target }}
-          manifest: src/manifest.json
-          api-key: ${{ secrets.AMO_SIGN_KEY }}
-          api-secret: ${{ secrets.AMO_SIGN_SECRET }}
+    Release-Firefox:
+      runs-on: ubuntu-latest
+      steps:
+        - name: "Checkout"
+          uses: actions/checkout@v1
+
+        - name: "web-ext build"
+          id: web-ext-build
+          uses: kewisch/action-web-ext@v1
+          with:
+            cmd: build
+            source: src
+
+        - name: "publish firefox"
+          uses: trmcnvn/firefox-addon@v1
+          continue-on-error: true
+          with:
+            # uuid is only necessary when updating an existing addon,
+            # omitting it will create a new addon
+            uuid: '{afa62fd6-94ef-471f-b3d7-655451b263bf}'
+            xpi:  ${{ steps.web-ext-build.outputs.target }}
+            manifest: src/manifest.json
+            api-key: ${{ secrets.AMO_SIGN_KEY }}
+            api-secret: ${{ secrets.AMO_SIGN_SECRET }}
+
+        - name: "upload firefox build as artifact"
+          uses: actions/upload-artifact@master
+          continue-on-error: true
+          with:
+            name: userstyle
+            path: ${{ steps.web-ext-build.outputs.target }} 
           
-      - name: "upload firefox build as artifact"
-        uses: actions/upload-artifact@master
-        continue-on-error: true
-        with:
-          name: userstyle
-          path: ${{ steps.web-ext-build.outputs.target }} 
-          
-      - name: "crzip"    
-        uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
-        with:
-          extensionDir: 'extension'
-          zipFilePath: 'build/extension.zip'
-          
-      - name: "fetchtoken"
-        uses: cardinalby/google-api-fetch-token-action@v1
-        with:
-          clientId: ${{ secrets.CLIENT_ID }}
-          clientSecret: ${{ secrets.CLIENT_SECRET }}
-          refreshToken: ${{ secrets.CLIENT_REFRESH }}
-          
-      - name: "upload zip to crstore"
-        uses: cardinalby/webext-buildtools-chrome-webstore-action@v1
-        with:
-          zipFilePath: ${{ steps.crzip.outputs.zipFilePath }}
-          extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
-          apiClientId: ${{ secrets.CLIENT_ID }}
-          apiClientSecret: ${{ secrets.CLIENT_SECRET }}
-          apiRefreshToken: ${{ secrets.CLIENT_REFRESH }}
-          
-      - name: "publish crstore"
-        uses: cardinalby/webext-buildtools-chrome-webstore-publish-action@v1
-        with:
-          extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
-          apiClientId: ${{ secrets.CLIENT_ID }}
-          apiClientSecret: ${{ secrets.CLIENT_SECRET }}
-          apiRefreshToken: ${{ secrets.CLIENT_REFRESH }}
+    Release-Chrome:
+      runs-on: ubuntu-latest
+      steps:
+        - name: "crzip"    
+          uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+          with:
+            extensionDir: 'extension'
+            zipFilePath: 'build/extension.zip'
+
+        - name: "fetchtoken"
+          uses: cardinalby/google-api-fetch-token-action@v1
+          with:
+            clientId: ${{ secrets.CLIENT_ID }}
+            clientSecret: ${{ secrets.CLIENT_SECRET }}
+            refreshToken: ${{ secrets.CLIENT_REFRESH }}
+
+        - name: "upload zip to crstore"
+          uses: cardinalby/webext-buildtools-chrome-webstore-action@v1
+          with:
+            zipFilePath: ${{ steps.crzip.outputs.zipFilePath }}
+            extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
+            apiClientId: ${{ secrets.CLIENT_ID }}
+            apiClientSecret: ${{ secrets.CLIENT_SECRET }}
+            apiRefreshToken: ${{ secrets.CLIENT_REFRESH }}
+
+        - name: "publish crstore"
+          uses: cardinalby/webext-buildtools-chrome-webstore-publish-action@v1
+          with:
+            extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
+            apiClientId: ${{ secrets.CLIENT_ID }}
+            apiClientSecret: ${{ secrets.CLIENT_SECRET }}
+            apiRefreshToken: ${{ secrets.CLIENT_REFRESH }}
