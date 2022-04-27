@@ -68,11 +68,14 @@ jobs:
         with:
           zipFilePath: 'build/extension.zip'
           extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
-          apiAccessToken: ${{ steps.fetchtoken.outputs.accessToken }}
+          apiClientId: ${{ secrets.CLIENT_ID }}
+          apiClientSecret: ${{ secrets.CLIENT_SECRET }}
+          apiRefreshToken: ${{ secrets.CLIENT_REFRESH }}
           
       - name: "publish crstore"
         uses: cardinalby/webext-buildtools-chrome-webstore-publish-action@v1
         with:
           extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
-          apiAccessToken: ${{ steps.fetchtoken.outputs.accessToken }}
-          
+          apiClientId: ${{ secrets.CLIENT_ID }}
+          apiClientSecret: ${{ secrets.CLIENT_SECRET }}
+          apiRefreshToken: ${{ secrets.CLIENT_REFRESH }}
