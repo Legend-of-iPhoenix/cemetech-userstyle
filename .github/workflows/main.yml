@@ -55,15 +55,20 @@ jobs:
         with:
           name: src
           path: src.zip 
-      
-      - name: "publish chrome"
-        continue-on-error: true
-        uses: trmcnvn/chrome-addon@v2
+          
+      - name: "upload zip to crstore"
+        uses: cardinalby/webext-buildtools-chrome-webstore-action@v1
         with:
-          # extension is only necessary when updating an existing addon,
-          # omitting it will create a new addon
-          extension: jfcdlkkkngaallphcckjjbnokjonloan
-          zip: src.zip
-          client-id: ${{ secrets.CLIENT_ID }}
-          client-secret: ${{ secrets.CLIENT_SECRET }}
-          refresh-token: ${{ secrets.CLIENT_REFRESH }}
+          zipFilePath: 'build/extension.zip'
+          extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
+          apiClientId: ${{ secrets.CLIENT_ID }}
+          apiClientSecret: ${{ secrets.CLIENT_SECRET }}
+          apiRefreshToken: ${{ secrets.REFRESH_TOKEN }}
+          
+      - name: "publish crstore"
+        uses: cardinalby/webext-buildtools-chrome-webstore-publish-action@v1
+        with:
+          extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
+          apiClientId: ${{ secrets.CLIENT_ID }}
+          apiClientSecret: ${{ secrets.CLIENT_SECRET }}
+          apiRefreshToken: ${{ secrets.REFRESH_TOKEN }}
