@@ -46,15 +46,11 @@ jobs:
           name: userstyle
           path: ${{ steps.web-ext-build.outputs.target }} 
           
-      - uses: montudor/action-zip@v1
+      - name: "crzip"    
+        uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
         with:
-          args: zip -qq -r extension.zip src
-          
-      - name: "upload zip"
-        uses: actions/upload-artifact@master
-        with:
-          name: extension
-          path: extension.zip 
+          extensionDir: 'extension'
+          zipFilePath: 'build/extension.zip'
           
       - name: "fetchtoken"
         uses: cardinalby/google-api-fetch-token-action@v1
@@ -66,7 +62,7 @@ jobs:
       - name: "upload zip to crstore"
         uses: cardinalby/webext-buildtools-chrome-webstore-action@v1
         with:
-          zipFilePath: 'extension.zip'
+          zipFilePath: ${{ steps.crzip.outputs.zipFilePath }}
           extensionId: 'jfcdlkkkngaallphcckjjbnokjonloan'
           apiClientId: ${{ secrets.CLIENT_ID }}
           apiClientSecret: ${{ secrets.CLIENT_SECRET }}
