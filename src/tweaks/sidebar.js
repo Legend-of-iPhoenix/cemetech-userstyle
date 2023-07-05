@@ -7,7 +7,7 @@ new Tweak("Make online users clickable.", /.*/, () => {
 			const names = parts[1].trim().slice(0, -1).split(", ");
 
 			const links = names.map(name => {
-				return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+				return "<a href='https://www.cemetech.net/users/" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
 			});
 
 			sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
@@ -16,7 +16,7 @@ new Tweak("Make online users clickable.", /.*/, () => {
 		for (let i = 1; i < parts.childElementCount + 1; i++) {
 			const node = parts.childNodes[i].firstElementChild;
 			const name = node.textContent;
-			node.innerHTML = "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+			node.innerHTML = "<a href='https://www.cemetech.net/users/" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
 		}
 	}
 });
