@@ -28,19 +28,6 @@ function escapeHtml(text) {
 	return text.replace(/[&<>]/g, replaceTag);
 }
 
-
-// needs to run instantly
-(() => {
-	const runtime = chrome === undefined ? (browser === undefined ? undefined : browser.extension) : chrome.runtime;
-
-	if (runtime) {
-		const script = document.createElement("script");
-		script.src = runtime.getURL("sax.js");
-		script.charset = "utf-8";
-		document.body.appendChild(script);
-	}
-})();
-
 Tweak.execute(window.location.href);
 
 // make sure this is always the last line in the file for future maintainers.

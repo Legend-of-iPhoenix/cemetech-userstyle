@@ -10,7 +10,7 @@ Safari is not officially supported but you can try to install it following the d
 
 ## Full list of changes
 *Organized alphabetically*
-- Adds a /shrug command to SAX.
+- ~~Adds a /shrug command to SAX.~~ Removed, as Tari rewrote SAX sitewide.
 - Adds a fullscreen button to SourceCoder 3.
 - Adds a fullscreen post editor with live preview.
 - Adds copy button to code blocks.
@@ -29,7 +29,7 @@ Safari is not officially supported but you can try to install it following the d
 - Centers emoji and some images.
 - Centers the search bar vertically.
 - Changes all [size=1] and [size=2] tags to spoilers that can be revealed on hover.
-- Completely rewrites SAX.
+- ~~Completely rewrites SAX.~~ Removed, as Tari rewrote SAX sitewide.
 - Disables small caps in the admin menu.
 - Enforces a maximum size on avatars.
 - Fixes a console error with the youtube button.
@@ -52,7 +52,6 @@ Safari is not officially supported but you can try to install it following the d
 - Makes polls and pips smooth and consistent.
 - Removes borders where unnecessary.
 - Removes most gradients.
-- Removes redundant [#] in SAX messages.
 - Restyles United TI pages to make the blue more uniform.
 - Reworks the Emoji Table.
 - Shortens dates.

@@ -1,31 +1,38 @@
 function addEditorButton(name, accessKey, style, helpMessage) {
 	const tagname = name.toLowerCase();
 
-	// this code interfaces with at least three layers of garbage code, why not add another one on top.
-	new GlobalTweak(`Add ${name} button.`, /cemetech\.net\/forum\/posting\.php/, Function(`
-		/* HEY! this is generated code */
+	new GlobalTweak(
+		`Add ${name} button.`,
+		/cemetech\.net\/forum\/posting\.php/,
+		() => {
+			// help text (same effect, no eval)
+			window[`${name}_help`] =
+				`${helpMessage}: [${tagname}]text[/${tagname}] (alt+${accessKey})`;
 
-		window["${name}_help"] = "${helpMessage.replace(/"/g, '\\"') + `: [${tagname}]text[/${tagname}] (alt+${accessKey})`}";
+			const position = bbtags.length;
+			bbtags.push(`[${tagname}]`, `[/${tagname}]`);
 
-		const position = bbtags.length;
-		bbtags.push("[${tagname}]", "[/${tagname}]");
+			const container = document.createElement("span");
+			container.className = "genmed code-button-wrap";
 
-		const container = document.createElement('span');
-		container.classList = "genmed code-button-wrap";
+			const button = document.createElement("input");
+			button.type = "button";
+			button.className = "button";
+			button.accessKey = accessKey;
+			button.style.cssText = style;
+			button.value = name;
 
-		const button = document.createElement('input');
-		button.type = "button";
-		button.classList = "button";
-		button.accessKey = "${accessKey}";
-		button.style = "${style.replace(/"/g, '\\"')}";
-		button.onclick = () => bbstyle(position);
-		button.onmouseover = () => helpline('${name}');
+			button.addEventListener("click", () => bbstyle(position));
+			button.addEventListener("mouseover", () => helpline(name));
 
-		button.value = "${name}";
+			container.appendChild(button);
 
-		container.appendChild(button);
-		document.querySelector(".code-buttons:first-child").appendChild(container);
-	`));
+			const target = document.querySelector(".code-buttons:first-child");
+			if (target) {
+				target.appendChild(container);
+			}
+		}
+	);
 }
 
 addEditorButton("Strike", "t", "text-decoration: line-through;", "Strikethrough text");
